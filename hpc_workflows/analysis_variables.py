@@ -2,6 +2,7 @@
 # to multiple projects and research questions.
 import pandas as pd
 import numpy as np
+import re
 
 procedure_codes = { #currently ____ procedures, change for new procedure
     "cpt_codes": [],
@@ -79,9 +80,8 @@ def data_enrichment_function(sedd, sasd, sid, sid_ed, codes, linker_table):
             codes = codes.query(f"init_chart == {init_visit}")
         if ed_visit != "any":
             codes = codes.query(f"ed_flag == {ed_visit}")
-        return codes.reset_index().\
-            groupby("visit_link")["codes"].unique().apply(lambda x: [st.strip() for st in x]).\
-            transform(lambda x: any([code in str(x) for code in code_types[code_type_key]]))
+        return codes.reset_index().groupby("visit_link")["codes"].unique()\
+            .astype('str').transform(lambda code_string: any([re.match(code, code_string) for code in code_types[code_type_key]]))
     
     # linker_table[de_col_keys[0]] = code_linker(de_col_keys[0], init_visit=True).map({
     #     True: de_col_values[de_col_keys[0]][0],

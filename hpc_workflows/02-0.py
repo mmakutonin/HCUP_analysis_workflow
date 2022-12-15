@@ -25,7 +25,7 @@ with open(f"../tables/dropped_patients.txt", 'w') as f:
 # ### Utility Functions
 
 # %%
-def create_linker_table(sedd = False, sid_ed = False, sid = False, sasd = False):
+def create_linker_table(sedd, sid_ed, sid, sasd, include_sedd = False, include_sid_ed = False, include_sid = False, include_sasd = False):
     def create_linker_table(dataset, sid_flag):
         join_dataset = sid if sid_flag else dataset
         dataset = dataset.reset_index().groupby("visit_link")[["record_id", "year"]].min().join(
@@ -40,13 +40,13 @@ def create_linker_table(sedd = False, sid_ed = False, sid = False, sasd = False)
         return dataset
     #init linker_table with year and record_id of initial ED visit
     table_list = []
-    if isinstance(sedd, pd.DataFrame):
+    if include_sedd:
         table_list.append(create_linker_table(sedd, False))
-    if isinstance(sid, pd.DataFrame):
+    if include_sid:
         table_list.append(create_linker_table(sid, True))
-    elif isinstance(sid_ed, pd.DataFrame):
+    elif include_sid_ed:
         table_list.append(create_linker_table(sid_ed, True))
-    if isinstance(sasd, pd.DataFrame):
+    if include_sasd:
         table_list.append(create_linker_table(sasd, False))
     linker_table = pd.concat(table_list).sort_values(["initial_year", "initial_discharge_quarter"])\
     .reset_index().drop_duplicates("visit_link", keep="first")\
@@ -220,7 +220,13 @@ def calc_LOS(linker_table, sedd, sid, sasd):
 
 # %%
 starting_run("process full datasets")
-linker_table = create_linker_table(sedd = init_visit_datasets["sedd"], sid_ed = init_visit_datasets["sid_ed"], sid = init_visit_datasets["sid"], sasd = init_visit_datasets["sasd"])
+linker_table = create_linker_table(
+    sedd, sid_ed, sid, sasd,
+    include_sedd = init_visit_datasets["sedd"],
+    include_sid_ed = init_visit_datasets["sid_ed"],
+    include_sid = init_visit_datasets["sid"],
+    include_sasd = init_visit_datasets["sasd"]
+)
 linker_table = censor_first_6_mos(linker_table)
 sedd, sasd, sid, sid_ed = filter_data_on_year(sedd, sasd, sid, sid_ed, linker_table)
 linker_table = count_admits(sedd, sasd, sid, sid_ed, linker_table)
