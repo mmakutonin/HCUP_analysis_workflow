@@ -41,10 +41,8 @@ def preprocess_dataset(dataset):
     #encode dataset demographics
     dem_dataset = dataset.loc[:, demographic_cols].dropna()
     encoded_dataset = encode_dataset(dem_dataset).join(dataset[numerical_demographic_cols], how='inner')\
-        .join(category_status.loc[:, list(code_category_dict.keys())[20:]], how="inner")
-    outer_encoded_dataset = encode_dataset(dem_dataset).join(dataset[numerical_demographic_cols], how='outer')\
-        .join(category_status.loc[:, list(code_category_dict.keys())[20:]], how="outer") # only computed to find dropped row number.
-    print_to_drop(f"Dropped {outer_encoded_dataset.shape[0] - encoded_dataset.shape[0]} rows for 3.2 analysis due to missing demographics.")
+        .join(category_status.loc[:, list(code_category_dict.keys())[20:]], how="inner").dropna()
+    print_to_drop(f"Dropped {dem_dataset.shape[0] - encoded_dataset.dropna().shape[0]} rows for 3.2 analysis due to missing demographics.")
     #scale columns
     scaled_data = pd.DataFrame(
         scaler.fit_transform(encoded_dataset),
