@@ -77,7 +77,11 @@ zero_cost = summary_enhanced.query('Cost == 0').index
 # If both conditions met, drop from summary table since it's a false zero
 drop_rows = [index for index in missing_costs if index in zero_cost]
 print_to_drop(f"{len(drop_rows)} records dropped due to zero SID and SEDD costs.")
+
+negative_cost = summary_enhanced.query('Cost < 0').index
+print_to_drop(f"{len(negative_cost)} dropped due to negative cost.")
 summary_enhanced.drop(drop_rows, inplace=True)
+summary_enhanced.drop(negative_cost, inplace=True)
 
 #filter outcomes_by_quarter and restrict columns
 outcomes_by_quarter = outcomes_by_quarter.join(summary_enhanced, how="inner", on="visit_link", rsuffix="_x")\
