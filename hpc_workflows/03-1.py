@@ -102,7 +102,14 @@ summary_table_sum_cols = [ #these are the columns that are not aggregates of pro
 # %%
 def create_outcome_crosscomparison_table(num_full_dataset, outcome_variable, groupby_row):
     table_data = {}
+    if len(groupby_row) == 1: #This probably represents a demographic variable.
+        groupby_row.append(f"Not {groupby_row[0]}")
+        demographic_row = True
+    else:
+        demographic_row = False
     for name, dataset in num_full_dataset:
+        if demographic_row:
+            dataset[f"Not {groupby_row[0]}"] = (~(dataset[groupby_row[0]].astype("bool"))).astype(int) #need type conversions because NOT operation does not work on int series.
         dataset = dataset[[*groupby_row, outcome_variable]]
         table_data[f"{name} (%, 95% CI, N)"] = [dataset[dataset[row] == 1][outcome_variable] for row in groupby_row]
     dataset_df = pd.DataFrame(table_data, index=groupby_row)
