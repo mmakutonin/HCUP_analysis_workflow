@@ -4,7 +4,7 @@
 # %%
 import pandas as pd
 import numpy as np
-from utility_functions import load_file, pickle_file, starting_run, finished_run
+from utility_functions import load_file, pickle_file, starting_run, finished_run, print_to_drop
 from analysis_variables import de_col_keys, de_col_values, demographic_tables, code_category_dict
 from scipy.stats import f_oneway, ttest_ind, sem, norm, t
 from statsmodels.stats.api import DescrStatsW, CompareMeans
@@ -141,6 +141,9 @@ def create_outcome_crosscomparison_table(num_full_dataset, outcome_variable, gro
 
 # %%
 def create_summary(groupby_col, save_filepath, tb, filter_criteria="`Cost (USD)` >= 0"): #cost should always be positive, making this a universal filter
+    if dem_dataset.query(filter_criteria).shape[0] == 0:
+        print_to_drop(f"Could not create `{save_filepath}` because filter criteria of `{filter_criteria}` returned empty dataset.")
+        return
     #Dependencies for both cross-comparison and summary tables
     num_full_dataset = dem_dataset.query(filter_criteria).join(comorbidities, how="left")\
         .fillna(0).astype("int").join(full_dataset[groupby_col], rsuffix="r_").groupby(groupby_col)
