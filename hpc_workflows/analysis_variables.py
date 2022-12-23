@@ -80,7 +80,7 @@ def data_enrichment_function(sedd, sasd, sid, sid_ed, codes, linker_table):
         if ed_visit != "any":
             codes = codes.query(f"ed_flag == {ed_visit}")
         return codes.reset_index().groupby("visit_link")["codes"].unique().transform(lambda ls: pd.Series(ls)).agg(
-            lambda row: any([row.str.contains(code).any() for code in ["K352", "K3520", "K3521", "K3531", "K3532", "K3533", "K35891"]]),
+            lambda row: any([row.str.contains(code).any() for code in code_types[code_type_key]]),
             axis=1
         )
     
