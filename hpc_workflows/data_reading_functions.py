@@ -36,7 +36,8 @@ core_reference = {
             "total_charges":     "float",
             "year":              "float",
             "discharge_quarter": "float",
-            "rural_urban":       "float"
+            "rural_urban":       "float",
+            "disposition_code":  "int",
         },
         "2018": {
             "age":               [1,3],
@@ -56,7 +57,8 @@ core_reference = {
             "visit_link":        [1241,1249],
             "total_charges":     [1216,1225],
             "year":              [1250,1253],
-            "discharge_quarter": [621,622]
+            "discharge_quarter": [621,622],
+            "disposition_code":  [617,618],
         },
         "2017": {
             "age":               [1,3],
@@ -76,7 +78,8 @@ core_reference = {
             "visit_link":        [1019,1027],
             "total_charges":     [994,1003],
             "year":              [1028,1031],
-            "discharge_quarter": [621,622]
+            "discharge_quarter": [621,622],
+            "disposition_code":  [617,618],
         },
         "2016": {
             "age":               [1,3],
@@ -96,7 +99,8 @@ core_reference = {
             "visit_link":        [1098,1106],
             "total_charges":     [1073,1082],
             "year":              [1107,1110],
-            "discharge_quarter": [621,622]
+            "discharge_quarter": [621,622],
+            "disposition_code":  [617,618],
         }
     },
     "sasd": {
@@ -109,7 +113,8 @@ core_reference = {
             "year":              "float",
             "length_of_stay":    "float",
             "total_charges":   "float",
-            "discharge_quarter": "float"
+            "discharge_quarter": "float",
+            "disposition_code":  "int",
         },
         "2018": {
             "record_id":         [1096,1110],
@@ -120,7 +125,8 @@ core_reference = {
             "year":              [1260,1263],
             "length_of_stay":    [1111,1115],
             "total_charges":   [1226,1235],
-            "discharge_quarter": [621,622]
+            "discharge_quarter": [621,622],
+            "disposition_code":  [617,618],
         },
         "2017": {
             "record_id":         [889,903],
@@ -131,7 +137,8 @@ core_reference = {
             "year":              [1038,1041],
             "length_of_stay":    [904,908],
             "total_charges":   [1004,1013],
-            "discharge_quarter": [621,622]
+            "discharge_quarter": [621,622],
+            "disposition_code":  [617,618],
         },
         "2016": {
             "record_id":         [968,982],
@@ -142,7 +149,8 @@ core_reference = {
             "year":              [1117,1120],
             "length_of_stay":    [983,987],
             "total_charges":   [1083,1092],
-            "discharge_quarter": [621,622]
+            "discharge_quarter": [621,622],
+            "disposition_code":  [617,618],
         }
     },
     "sid": {
@@ -164,7 +172,8 @@ core_reference = {
             "rural_urban":       "float",
             "female":            "float",
             "homeless":          "float",
-            "hospital_id":       "string"
+            "hospital_id":       "string",
+            # "disposition_code":  "int", # not present 2016-17
         },
         "2018": {
             "record_id":         [1177,1191],
@@ -184,7 +193,8 @@ core_reference = {
             "rural_urban":       [1278,1279],
             "female":            [159,160],
             "homeless":          [168,169],
-            "hospital_id":       [64,80]
+            "hospital_id":       [64,80],
+            # "disposition_code":  [50,51],
         },
         "2017": {
             "record_id":         [563,577],
@@ -204,7 +214,8 @@ core_reference = {
             "rural_urban":       [658,659],
             "female":            [112,113],
             "homeless":          [121,122],
-            "hospital_id":       [62,78]
+            "hospital_id":       [62,78],
+            # "disposition_code":  [617,618],
         },
         "2016": {
             "record_id":         [622,636],
@@ -224,7 +235,8 @@ core_reference = {
             "rural_urban":       [717,718],
             "female":            [120,121],
             "homeless":          [129,130],
-            "hospital_id":       [62,78]
+            "hospital_id":       [62,78],
+            # "disposition_code":  [617,618],
         }
     }
 }

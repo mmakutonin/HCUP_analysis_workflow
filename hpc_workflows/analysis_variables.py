@@ -64,6 +64,16 @@ def dataset_filtering_function(dataset_name, dataset_core, proc_code_type):
 
 # Data Enrichment
 # Separates records/patients into subgroups for statistical analysis. Currently _________
+
+# if using sedd/sasd files, can use code descriptors found at https://www.hcup-us.ahrq.gov/db/vars/siddistnote.jsp?var=DISPUB04 to implement dict
+dispo_dict = {
+    # "Col_name": [int codes included]
+}
+def enrich_disposition_categories(linker_table):
+    for key, value in dispo_dict.items():
+        linker_table[key] = linker_table["disposition_code"].transform(lambda code: code in value)
+    return linker_table
+    
 de_col_keys = [
     # "Key Name", ...
 ]
