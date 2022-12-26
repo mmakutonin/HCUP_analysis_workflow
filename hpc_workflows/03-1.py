@@ -5,7 +5,7 @@
 import pandas as pd
 import numpy as np
 from utility_functions import load_file, pickle_file, starting_run, finished_run, print_to_drop
-from analysis_variables import de_col_keys, de_col_values, demographic_tables, code_category_dict
+from analysis_variables import de_col_keys, de_col_values, de_col_numerical_cols, demographic_tables, code_category_dict
 from scipy.stats import f_oneway, ttest_ind, sem, norm, t
 from statsmodels.stats.api import DescrStatsW, CompareMeans
 
@@ -40,8 +40,8 @@ full_dataset["Length of Stay (mean days)"] = full_dataset["LOS"]
 full_dataset["Deaths (%)"] = full_dataset["Died"]
 
 # del full_dataset["Admitted"] #step needed in this analysis due to "Admitted" column in de_col_values
-for key in de_col_keys:
-    full_dataset = full_dataset.join([full_dataset[key].eq(val).rename(val).loc[full_dataset.index] for val in de_col_values[key]])
+for key, values in de_col_values.items():
+    full_dataset = full_dataset.join([full_dataset[key].eq(val).rename(val).loc[full_dataset.index] for val in values])
 # full_dataset = full_dataset.join([full_dataset[de_col_name].eq(val).rename(val) for val in de_col_values])
 
 dem_dataset = full_dataset[[
@@ -64,7 +64,8 @@ dem_dataset = full_dataset[[
     'Deaths (%)',
     'Charleston Comorbidity Index (mean)',
     'Length of Stay (mean days)',
-    *pd.core.common.flatten(de_col_values.values())
+    *pd.core.common.flatten(de_col_values.values()),
+    *de_col_numerical_cols
 ]].copy()
 
 category_dict = {
@@ -89,7 +90,8 @@ category_dict = {
     'Deaths (%)': 'Outcome',
     'Length of Stay (mean days)': 'Outcome',
     'Admitted': 'Clinical Pathway',
-    **{value: 'Clinical Pathway' for value in pd.core.common.flatten(de_col_values.values())}
+    **{value: 'Clinical Pathway' for value in pd.core.common.flatten(de_col_values.values())},
+    **{value: 'Clinical Pathway' for value in de_col_numerical_cols}
 }
 
 summary_table_sum_cols = [ #these are the columns that are not aggregates of proportions of patients

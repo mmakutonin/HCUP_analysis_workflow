@@ -77,6 +77,9 @@ def enrich_disposition_categories(linker_table):
 de_col_keys = [
     # "Key Name", ...
 ]
+de_col_numerical_cols = [
+    # de_col_key[X], ...
+]
 de_col_values = {
     # de_col_keys[0]: ["Key Value", ...],
 }
