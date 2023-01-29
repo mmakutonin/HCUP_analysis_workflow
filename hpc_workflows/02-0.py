@@ -145,20 +145,21 @@ def create_code_lookup_table(sedd, sasd, sid, linker_table):
     data_list = []
     for dataset in dataset_list:
         #does ICD-10-CM codes for every dataset, then dataset-specific procedure codes
-        for flag in [{"pcs_type":"ICD-10","pcs_flag":"icd_flag"},dataset]:
-            data = postprocess_dataset(preprocess_dataset(dataset["dataset"]), flag["pcs_type"])
-            data[flag["pcs_flag"]] = True
-            data['ed_flag'] = dataset["ED_chart"]
-            data["amb_surg_flag"] = dataset["amb_surg_chart"]
-            data_list.append(data)
-            # Process initial charts:
-            data_init = postprocess_dataset(preprocess_dataset_on_init_chart(dataset["dataset"]), flag["pcs_type"])
-            if data_init.size > 0:
-                data_init[flag["pcs_flag"]] = True
-                data_init['init_chart'] = True
-                data_init['ed_flag'] = dataset["ED_chart"]
-                data_init["amb_surg_flag"] = dataset["amb_surg_chart"]
-                data_list.append(data_init)
+        if dataset["dataset"].shape[0] > 0:
+            for flag in [{"pcs_type":"ICD-10","pcs_flag":"icd_flag"},dataset]:
+                data = postprocess_dataset(preprocess_dataset(dataset["dataset"]), flag["pcs_type"])
+                data[flag["pcs_flag"]] = True
+                data['ed_flag'] = dataset["ED_chart"]
+                data["amb_surg_flag"] = dataset["amb_surg_chart"]
+                data_list.append(data)
+                # Process initial charts:
+                data_init = postprocess_dataset(preprocess_dataset_on_init_chart(dataset["dataset"]), flag["pcs_type"])
+                if data_init.size > 0:
+                    data_init[flag["pcs_flag"]] = True
+                    data_init['init_chart'] = True
+                    data_init['ed_flag'] = dataset["ED_chart"]
+                    data_init["amb_surg_flag"] = dataset["amb_surg_chart"]
+                    data_list.append(data_init)
     return pd.concat(data_list).fillna(False)
 
 # %%
