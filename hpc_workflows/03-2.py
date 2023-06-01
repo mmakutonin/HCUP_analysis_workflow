@@ -30,7 +30,7 @@ if not os.path.isdir(f"../tables/ttest"):
 
 # %%
 demographic_cols = ['marital_status', 'initial_discharge_quarter', 'gender', 'race', 'payer']
-numerical_demographic_cols = ['age', 'median_zip_income', 'CMDF CCI']
+numerical_demographic_cols = ['median_zip_income', 'CMDF CCI', "Geriatric", "Pediatric"]
 def encode_dataset(dataset):
     encoded_dataset = pd.DataFrame(
         enc.fit_transform(dataset), dataset.index

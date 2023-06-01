@@ -164,16 +164,12 @@ def create_code_lookup_table(sedd, sasd, sid, linker_table):
 
 # %%
 def enrich_comorbidities(codes):
-    category_list = []
-    visit_codes = codes.reset_index().\
-        groupby("visit_link")["codes"].unique().apply(lambda x: [st.strip() for st in x])
-    for key, values in code_category_dict.items():
-        category_list.append(visit_codes.transform(
-            lambda x: any([any([code.startswith(value) for value in values]) for code in x])
-        ).rename(key))
-    comorbidities = pd.DataFrame(category_list).astype("int").T
-    comorbidities.index = comorbidities.index
-    return comorbidities
+    visit_codes = codes.reset_index().groupby("visit_link")["codes"]
+    return pd.concat([
+        visit_codes.apply(
+            lambda ser: pd.concat([ser.str.contains(f"^{code}") for code in codes]).any().any()
+        ).rename(key) for key, codes in code_category_dict.items()
+    ], axis=1).astype("int")
 
 # %%
 def calculate_cci_score(linker_table, comorbidities): # based on https://www.mdcalc.com/charlson-comorbidity-index-cci#evidence

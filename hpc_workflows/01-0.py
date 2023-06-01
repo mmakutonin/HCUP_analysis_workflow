@@ -17,11 +17,11 @@ if not os.path.isdir(f"../pickled_data/"):
 split_codes = lambda val, col_name: [val[i:i+code_lengths[col_name]] for i in range(0, len(val), code_lengths[col_name])]
 
 def process_dataset(dataset, proc_code_type):
-    dataset_core = read_data(core_reference[dataset]["2018"], f"MD_{dataset.upper()}_2018_CORE.asc").append(
-        read_data(core_reference[dataset]["2017"], f"MD_{dataset.upper()}_2017_CORE.asc")
-    ).append(
-        read_data(core_reference[dataset]["2016"], f"MD_{dataset.upper()}_2016_CORE.asc"), ignore_index=True
-    )
+    dataset_core = pd.concat([
+        read_data(core_reference[dataset]["2018"], f"MD_{dataset.upper()}_2018_CORE.asc"),
+        read_data(core_reference[dataset]["2017"], f"MD_{dataset.upper()}_2017_CORE.asc"),
+        read_data(core_reference[dataset]["2016"], f"MD_{dataset.upper()}_2016_CORE.asc")
+    ], ignore_index=True)
     
     dataset_core = dataset_filtering_function(dataset, dataset_core, proc_code_type)
     dataset_core = dataset_core.astype(core_reference[dataset]["dtypes"]).set_index("record_id")
