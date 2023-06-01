@@ -58,7 +58,7 @@ core_reference = {
             "total_charges":     [1216,1225],
             "year":              [1250,1253],
             "discharge_quarter": [621,622],
-            "disposition_code":  [617,618],
+            "disposition_code":  [615,616],
         },
         "2017": {
             "age":               [1,3],
@@ -79,7 +79,7 @@ core_reference = {
             "total_charges":     [994,1003],
             "year":              [1028,1031],
             "discharge_quarter": [621,622],
-            "disposition_code":  [617,618],
+            "disposition_code":  [615,616],
         },
         "2016": {
             "age":               [1,3],
@@ -100,7 +100,7 @@ core_reference = {
             "total_charges":     [1073,1082],
             "year":              [1107,1110],
             "discharge_quarter": [621,622],
-            "disposition_code":  [617,618],
+            "disposition_code":  [615,616],
         }
     },
     "sasd": {
