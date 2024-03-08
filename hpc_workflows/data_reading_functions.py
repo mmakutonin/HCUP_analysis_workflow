@@ -39,6 +39,69 @@ core_reference = {
             "rural_urban":       "float",
             "disposition_code":  "int",
         },
+        "2021": {
+            "age":               [1,3],
+            # "admission_type":    [14,15],
+            # "weekend_admission": [16,17],
+            "cpt_codes":         [18,242],
+            "disposition_code":  [615,616],
+            "discharge_quarter": [621,622],
+            "female":            [640,641],
+            "homeless":          [649,650],
+            "ICD-10":            [660,1079],
+            "record_id":         [1086,1100],
+            "length_of_stay":    [1101,1105],
+            "married":           [1113,1113],
+            "payer":             [1160,1161],
+            "rural_urban":       [1187,1188],
+            "race":              [1204,1205],
+            "median_zip_income": [1262,1264],
+            "visit_link":        [1241,1249],
+            "total_charges":     [1216,1225],
+            "year":              [1259,1262],
+        },
+        "2020": {
+            "age":               [1,3],
+            # "admission_type":    [14,15],
+            # "weekend_admission": [16,17],
+            "cpt_codes":         [18,242],
+            "disposition_code":  [611,612],
+            "discharge_quarter": [617,618],
+            "female":            [636,637],
+            "homeless":          [655,656],
+            "ICD-10":            [666,1064],
+            "record_id":         [1071,1085],
+            "length_of_stay":    [1086,1090],
+            "married":           [1098,1098],
+            "payer":             [1145,1146],
+            "rural_urban":       [1172,1173],
+            "race":              [1194,1195],
+            "median_zip_income": [1252,1254],
+            "visit_link":        [1231,1239],
+            "total_charges":     [1206,1215],
+            "year":              [1240,1243],
+        },
+        "2019": {
+            "age":               [1,3],
+            # "admission_type":    [14,15],
+            # "weekend_admission": [16,17],
+            "cpt_codes":         [18,242],
+            "disposition_code":  [609,610],
+            "discharge_quarter": [611,612],
+            "female":            [636,637],
+            "homeless":          [647,648],
+            "ICD-10":            [649,1005],
+            "record_id":         [1012,1026],
+            "length_of_stay":    [1027,1031],
+            "married":           [1038,1038],
+            "payer":             [1086,1087],
+            "rural_urban":       [1113,1114],
+            "race":              [1135,1136],
+            "median_zip_income": [1193,1195],
+            "visit_link":        [1172,1180],
+            "total_charges":     [1147,1156],
+            "year":              [1181,1184],
+        },
         "2018": {
             "age":               [1,3],
             # "admission_type":    [14,15],
@@ -116,6 +179,45 @@ core_reference = {
             "discharge_quarter": "float",
             "disposition_code":  "int",
         },
+        "2021": {
+            "cpt_codes":         [18,242],
+            "disposition_code":  [611,612],
+            "discharge_quarter": [617,618],
+            "ICD-10":            [659,1071],
+            "record_id":         [1078,1092],
+            "visit_link":        [1250,1258],
+            "payer":             [1152,1153],
+            "year":              [1259,1262],
+            "length_of_stay":    [1093,1097],
+            "total_charges":   [1225,1234],
+            
+        },
+        "2020": {
+            "cpt_codes":         [18,242],
+            "disposition_code":  [611,612],
+            "discharge_quarter": [617,618],
+            "ICD-10":            [659,1064],
+            "record_id":         [1071,1085],
+            "visit_link":        [1231,1239],
+            "payer":             [1145,1146],
+            "year":              [1240,1243],
+            "length_of_stay":    [1086,1090],
+            "total_charges":   [1206,1215],
+            
+        },
+        "2019": {
+            "cpt_codes":         [18,242],
+            "disposition_code":  [609,610],
+            "discharge_quarter": [611,612],
+            "ICD-10":            [659,1008],
+            "record_id":         [1022,1036],
+            "visit_link":        [1182,1190],
+            "payer":             [1096,1097],
+            "year":              [1191,1194],
+            "length_of_stay":    [1037,1041],
+            "total_charges":   [1157,1166],
+            
+        },
         "2018": {
             "record_id":         [1096,1110],
             "visit_link":        [1251,1259],
@@ -174,6 +276,66 @@ core_reference = {
             "homeless":          "float",
             "hospital_id":       "string",
             # "disposition_code":  "int", # not present 2016-17
+        },
+        "2021": {
+            "age":               [1,3],
+            "discharge_quarter": [50,51],
+            "hospital_id":       [60,76],
+            "female":            [161,162],
+            "ed_admission":      [163,164],
+            "homeless":          [170,171],
+            "ICD-10":            [182,769],
+            "ICD-10-procedures": [776,1293],
+            "record_id":         [1299,1313],
+            "length_of_stay":    [1314,1318],
+            "married":           [1326,1326],
+            "payer":             [1373,1374],
+            "rural_urban":       [1405,1406],
+            "race":              [1815,1816],
+            "year":              [1865,1868],
+            "visit_link":        [1856,1864],
+            "total_charges":     [1827,1836],
+            "median_zip_income": [1877,1879]
+        },
+        "2020": {
+            "age":               [1,3],
+            "discharge_quarter": [50,51],
+            "hospital_id":       [60,76],
+            "female":            [160,161],
+            "ed_admission":      [162,163],
+            "homeless":          [169,170],
+            "ICD-10":            [181,761],
+            "ICD-10-procedures": [768,1208],
+            "record_id":         [1214,1228],
+            "length_of_stay":    [1229,1233],
+            "married":           [1241,1241],
+            "payer":             [1288,1289],
+            "rural_urban":       [1317,1318],
+            "race":              [1672,1673],
+            "year":              [1722,1725],
+            "visit_link":        [1713,1721],
+            "total_charges":     [1684,1693],
+            "median_zip_income": [1734,1736]
+        },
+        "2019": {
+            "age":               [1,3],
+            "discharge_quarter": [26,27],
+            "hospital_id":       [36,52],
+            "female":            [155,156],
+            "ed_admission":      [157,158],
+            "homeless":          [166,167],
+            "ICD-10":            [174,719],
+            "ICD-10-procedures": [728,1175],
+            "record_id":         [1181,1195],
+            "length_of_stay":    [1196,1200],
+            "married":           [1207,1207],
+            "payer":             [1255,1256],
+            "rural_urban":       [1282,1283],
+            "race":              [1642,1643],
+            "year":              [1687,1690],
+            "visit_link":        [1678,1686],
+            "total_charges":     [1649,1658],
+            "median_zip_income": [1699,1701]
         },
         "2018": {
             "record_id":         [1177,1191],
@@ -253,61 +415,58 @@ died_reference = {
         "visit_link": "float",
         "record_id": "float"
     },
-    "sedd": {
-        "2018": {
-            "Died": [613,614],
-            "visit_link": core_reference["sedd"]["2018"]["visit_link"],
-            "record_id": core_reference["sedd"]["2018"]["record_id"]
-        },
-        "2017": {
-            "Died": [613,614],
-            "visit_link": core_reference["sedd"]["2017"]["visit_link"],
-            "record_id": core_reference["sedd"]["2017"]["record_id"]
-        },
-        "2016": {
-            "Died": [613,614],
-            "visit_link": core_reference["sedd"]["2016"]["visit_link"],
-            "record_id": core_reference["sedd"]["2016"]["record_id"]
-        },
-    },
-    "sasd": {
-        "2018": {
-            "Died": [613,614],
-            "visit_link": core_reference["sasd"]["2018"]["visit_link"],
-            "record_id": core_reference["sasd"]["2018"]["record_id"]
-        },
-        "2017": {
-            "Died": [613,614],
-            "visit_link": core_reference["sasd"]["2017"]["visit_link"],
-            "record_id": core_reference["sasd"]["2017"]["record_id"]
-        },
-        "2016": {
-            "Died": [613,614],
-            "visit_link": core_reference["sasd"]["2016"]["visit_link"],
-            "record_id": core_reference["sasd"]["2016"]["record_id"]
-        },
-    },
-    "sid": {
-        "2018": {
-            "Died": [46,47],
-            "visit_link": core_reference["sid"]["2018"]["visit_link"],
-            "record_id": core_reference["sid"]["2018"]["record_id"]
-        },
-        "2017": {
-            "Died": [46,47],
-            "visit_link": core_reference["sid"]["2017"]["visit_link"],
-            "record_id": core_reference["sid"]["2017"]["record_id"]
-        },
-        "2016": {
-            "Died": [46,47],
-            "visit_link": core_reference["sid"]["2016"]["visit_link"],
-            "record_id": core_reference["sid"]["2016"]["record_id"]
-        },
-    }
+    "sedd": {year: {
+          **value,
+            "visit_link": core_reference["sedd"][year]["visit_link"],
+            "record_id": core_reference["sedd"][year]["record_id"]
+          } for year, value in {
+        "2021": {"Died": [609,610]},
+        "2020": {"Died": [609,610]},
+        "2019": {"Died": [603,604]},
+        "2018": {"Died": [613,614]},
+        "2017": {"Died": [613,614]},
+        "2016": {"Died": [613,614]},
+    }},
+    "sasd": {year: {
+          **value,
+            "visit_link": core_reference["sasd"][year]["visit_link"],
+            "record_id": core_reference["sasd"][year]["record_id"]
+          } for year, value in {
+        "2021": {"Died": [609,610]},
+        "2020": {"Died": [609,610]},
+        "2019": {"Died": [603,604]},
+        "2018": {"Died": [613,614]},
+        "2017": {"Died": [613,614]},
+        "2016": {"Died": [613,614]},
+    }},
+    "sid": {year: {
+          **value,
+            "visit_link": core_reference["sid"][year]["visit_link"],
+            "record_id": core_reference["sid"][year]["record_id"]
+          } for year, value in {
+        "2021": {"Died": [42,43]},
+        "2020": {"Died": [42,43]},
+        "2019": {"Died": [18,19]},
+        "2018": {"Died": [46,47]},
+        "2017": {"Died": [46,47]},
+        "2016": {"Died": [46,47]},
+    }}
 }
 
 hospital_reference = {
     "sid": {
+        "2021": {
+            "DSHOSPID": [8,24],
+            "HOSPID":   [25,29]
+        },
+        "2020": {
+            "DSHOSPID": [8,24],
+            "HOSPID":   [25,29]
+        },
+        "2019": {
+            "DSHOSPID": [8,24],
+            "HOSPID":   [25,29]
+        },
         "2018": {
             "DSHOSPID": [8,24],
             "HOSPID":   [25,29]
