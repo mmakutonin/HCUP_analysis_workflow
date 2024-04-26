@@ -18,6 +18,9 @@ split_codes = lambda val, col_name: [val[i:i+code_lengths[col_name]] for i in ra
 
 def process_dataset(dataset, proc_code_type):
     dataset_core = pd.concat([
+        read_data(core_reference[dataset]["2021"], f"MD_{dataset.upper()}_2021_CORE.asc"),
+        read_data(core_reference[dataset]["2020"], f"MD_{dataset.upper()}_2020_CORE.asc"),
+        read_data(core_reference[dataset]["2019"], f"MD_{dataset.upper()}_2019_CORE.asc"),
         read_data(core_reference[dataset]["2018"], f"MD_{dataset.upper()}_2018_CORE.asc"),
         read_data(core_reference[dataset]["2017"], f"MD_{dataset.upper()}_2017_CORE.asc"),
         read_data(core_reference[dataset]["2016"], f"MD_{dataset.upper()}_2016_CORE.asc")

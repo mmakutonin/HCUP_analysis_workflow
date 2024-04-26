@@ -1,19 +1,21 @@
 # these functions are used whenever reading raw HCUP data text files
 import pandas as pd
-from utility_functions import pickle_file
+from utility_functions import starting_run, finished_run
 
 data_dir = '../../raw_data/'
 
 # Reads HCUP text data into dataframe
 # Reference structure is {"col_name": [start_index, stop_index]}, see below
 def read_data(reference, file_name):
-    file_list = []
     with open(data_dir + file_name) as file:
-        for count, row in enumerate(file):
-            file_list.append({
-                key: row[value[0]-1:value[1]] for key, value in reference.items()
-            })
-    return pd.DataFrame(file_list[2:]) #each HCUP file has 2 header rows
+        file_list = pd.Series(file.readlines()[2:]) # each HCUP file has 2 header rows
+        starting_run(f"{file_name} with {len(file_list)} rows.")
+        return_df = file_list.apply(
+            lambda file_row: pd.Series(
+                {key: file_row[value[0]-1:value[1]]}
+            ) for key, value in reference.items())
+        finished_run(file_name)
+    return return_df
 
 # Commented-out key-value pairs kept in case of future need
 core_reference = {
