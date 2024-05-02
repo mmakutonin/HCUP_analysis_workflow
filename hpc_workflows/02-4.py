@@ -22,16 +22,17 @@ rvu_lookup = rvu_lookup[["DESCRIPTION", "TOTAL.1"]].dropna()
 summary_enhanced["CPT Costs"] = codes.query("cpt_flag == True")\
 .join(rvu_lookup, on="codes", how="left")["TOTAL.1"].reset_index()\
 .groupby("visit_link").sum().mul(conv_factor)
-summary_enhanced["CPT Costs"].fillna(0, inplace=True)
+summary_enhanced["CPT Costs"] = summary_enhanced["CPT Costs"].fillna(0)
 summary_enhanced["SID Costs"] = sid_costs.groupby('visit_link').sum().loc[:,'SID_costs']
-summary_enhanced["SID Costs"].fillna(0, inplace=True)
+summary_enhanced["SID Costs"] = summary_enhanced["SID Costs"].fillna(0)
 summary_enhanced["Cost"] = summary_enhanced["SID Costs"].add(summary_enhanced["CPT Costs"])
 
 # %%
-sedd_sasd_costs = sedd[["discharge_quarter", "visit_link", "cpt_codes", "year"]]\
-    .append(sasd[["discharge_quarter", "visit_link", "cpt_codes", "year"]])\
-    .explode(column='cpt_codes').join(rvu_lookup, on='cpt_codes', how="left")\
-    .groupby(['year', 'discharge_quarter', 'visit_link']).sum().mul(conv_factor)
+sedd_sasd_costs = pd.concat([
+    sedd[["discharge_quarter", "visit_link", "cpt_codes", "year"]],
+    sasd[["discharge_quarter", "visit_link", "cpt_codes", "year"]]
+]).explode(column='cpt_codes').join(rvu_lookup, on='cpt_codes', how="left")\
+     .groupby(['year', 'discharge_quarter', 'visit_link'])[["TOTAL.1"]].sum().mul(conv_factor)
 costs_by_quarter = sedd_sasd_costs.join(
     sid_costs.groupby(['year', 'discharge_quarter', 'visit_link']).sum(),
     how="outer"
@@ -90,5 +91,3 @@ outcomes_by_quarter = outcomes_by_quarter.join(summary_enhanced, how="inner", on
 # %%
 pickle_file("summary_costs_enhanced.pickle", summary_enhanced)
 pickle_file("outcomes_by_quarter.pickle", outcomes_by_quarter)
-
-

@@ -12,7 +12,10 @@ death_records = []
 
 # %%
 for dataset in ["sedd", "sid", "sasd"]:
-    for year in ["2016", "2017", "2018"]:
+    for year in [
+        "2016", "2017", "2018",
+        "2019", "2020", "2021"
+    ]:
         starting_run(dataset + year)
         data_file = read_data(died_reference[dataset][year], f"MD_{dataset.upper()}_{year}_CORE.asc")
         data_file['visit_link'] = data_file['visit_link'].str.strip() #to prevent corrupt data from erroring an astype()

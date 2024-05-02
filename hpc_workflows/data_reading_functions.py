@@ -8,12 +8,16 @@ data_dir = '../../raw_data/'
 # Reference structure is {"col_name": [start_index, stop_index]}, see below
 def read_data(reference, file_name):
     with open(data_dir + file_name) as file:
-        file_list = pd.Series(file.readlines()[2:]) # each HCUP file has 2 header rows
+        file_list = pd.Series(file.readlines()[
+            2: # if you want to read the full file
+            # 2:10 # helpful for debugging the workflow quickly if making changes to the data reading functions.
+        ]) # each HCUP file has 2 header rows
         starting_run(f"{file_name} with {len(file_list)} rows.")
         return_df = file_list.apply(
             lambda file_row: pd.Series(
-                {key: file_row[value[0]-1:value[1]]}
-            ) for key, value in reference.items())
+                {key: file_row[value[0]-1:value[1]] for key, value in reference.items()}
+            )
+        )
         finished_run(file_name)
     return return_df
 
@@ -46,20 +50,20 @@ core_reference = {
             # "admission_type":    [14,15],
             # "weekend_admission": [16,17],
             "cpt_codes":         [18,242],
-            "disposition_code":  [615,616],
-            "discharge_quarter": [621,622],
-            "female":            [640,641],
-            "homeless":          [649,650],
-            "ICD-10":            [660,1079],
-            "record_id":         [1086,1100],
-            "length_of_stay":    [1101,1105],
-            "married":           [1113,1113],
-            "payer":             [1160,1161],
-            "rural_urban":       [1187,1188],
+            "disposition_code":  [611,612],
+            "discharge_quarter": [617,618],
+            "female":            [636,637],
+            "homeless":          [655,656],
+            "ICD-10":            [666,1071],
+            "record_id":         [1078,1092],
+            "length_of_stay":    [1093,1097],
+            "married":           [1105,1105],
+            "payer":             [1152,1153],
+            "rural_urban":       [1182,1183],
             "race":              [1204,1205],
-            "median_zip_income": [1262,1264],
-            "visit_link":        [1241,1249],
-            "total_charges":     [1216,1225],
+            "median_zip_income": [1271,1273],
+            "visit_link":        [1250,1258],
+            "total_charges":     [1225,1234],
             "year":              [1259,1262],
         },
         "2020": {
@@ -92,7 +96,7 @@ core_reference = {
             "discharge_quarter": [611,612],
             "female":            [636,637],
             "homeless":          [647,648],
-            "ICD-10":            [649,1005],
+            "ICD-10":            [649,998],
             "record_id":         [1012,1026],
             "length_of_stay":    [1027,1031],
             "married":           [1038,1038],
@@ -185,7 +189,7 @@ core_reference = {
             "cpt_codes":         [18,242],
             "disposition_code":  [611,612],
             "discharge_quarter": [617,618],
-            "ICD-10":            [659,1071],
+            "ICD-10":            [666,1071],
             "record_id":         [1078,1092],
             "visit_link":        [1250,1258],
             "payer":             [1152,1153],
@@ -198,7 +202,7 @@ core_reference = {
             "cpt_codes":         [18,242],
             "disposition_code":  [611,612],
             "discharge_quarter": [617,618],
-            "ICD-10":            [659,1064],
+            "ICD-10":            [666,1064],
             "record_id":         [1071,1085],
             "visit_link":        [1231,1239],
             "payer":             [1145,1146],
@@ -428,7 +432,7 @@ died_reference = {
         "2018": {"Died": [613,614]},
         "2017": {"Died": [613,614]},
         "2016": {"Died": [613,614]},
-    }},
+    }.items()},
     "sasd": {year: {
           **value,
             "visit_link": core_reference["sasd"][year]["visit_link"],
@@ -440,7 +444,7 @@ died_reference = {
         "2018": {"Died": [613,614]},
         "2017": {"Died": [613,614]},
         "2016": {"Died": [613,614]},
-    }},
+    }.items()},
     "sid": {year: {
           **value,
             "visit_link": core_reference["sid"][year]["visit_link"],
@@ -452,7 +456,7 @@ died_reference = {
         "2018": {"Died": [46,47]},
         "2017": {"Died": [46,47]},
         "2016": {"Died": [46,47]},
-    }}
+    }.items()}
 }
 
 hospital_reference = {

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from utility_functions import load_file, pickle_file, starting_run, finished_run, print_to_drop
 from data_reading_functions import code_lengths
-from analysis_variables import procedure_codes, data_enrichment_function, enrich_disposition_categories, code_category_dict, init_visit_datasets
+from analysis_variables import procedure_codes, data_enrichment_function, code_category_dict, init_visit_datasets
 
 # %% [markdown]
 # ### Imports & File Loading
@@ -53,8 +53,8 @@ def create_linker_table(sedd, sid_ed, sid, sasd, include_sedd = False, include_s
     linker_table = pd.concat(table_list).sort_values(["initial_year", "initial_discharge_quarter"])\
     .reset_index().drop_duplicates("visit_link", keep="first")\
     .set_index("visit_link")
-    print_to_drop(f"Dropped {(linker_table['initial_year'] >= 2018).sum()} patients because initial_visit year = 2018")
-    linker_table = linker_table[linker_table["initial_year"] < 2018]
+    print_to_drop(f"Dropped {(linker_table['initial_year'] >= 2021).sum()} patients because initial_visit year = 2021")
+    linker_table = linker_table[linker_table["initial_year"] < 2021]
     
     #add max_year based on initial_year (assume following for 1 year)
     linker_table["max_year"] = (linker_table["initial_year"] + 1)
@@ -106,7 +106,7 @@ def create_code_lookup_table(sedd, sasd, sid, linker_table):
         ).query("initial_record_id != record_id").groupby("visit_link")
     def postprocess_dataset(dataset, code_type):
         return pd.DataFrame(
-            dataset[code_type].agg(np.sum).explode()\
+            dataset[code_type].sum().explode()\
             .replace(null_codes[code_type], np.nan).dropna()\
             .rename("codes").astype("str")
         )
@@ -198,8 +198,8 @@ def calc_charges(sedd, sid, linker_table):
     linker_table = linker_table.join(
         charges_for_dataset(sedd).rename("SEDD Charges"), how="left").join(
         charges_for_dataset(sid).rename("SID Charges"), how="left")
-    linker_table["SEDD Charges"].fillna(0, inplace=True)
-    linker_table["SID Charges"].fillna(0, inplace=True)
+    linker_table["SEDD Charges"] = linker_table["SEDD Charges"].fillna(0)
+    linker_table["SID Charges"] = linker_table["SID Charges"].fillna(0)
     return linker_table
 
 # %%
