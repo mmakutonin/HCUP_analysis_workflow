@@ -25,7 +25,6 @@ def process_dataset(dataset, proc_code_type):
         read_data(core_reference[dataset]["2017"], f"MD_{dataset.upper()}_2017_CORE.asc"),
         read_data(core_reference[dataset]["2016"], f"MD_{dataset.upper()}_2016_CORE.asc")
     ], ignore_index=True)
-    
     dataset_core = dataset_filtering_function(dataset, dataset_core, proc_code_type)
     dataset_core = dataset_core.astype(core_reference[dataset]["dtypes"]).set_index("record_id")
     dataset_core["ICD-10"] = dataset_core["ICD-10"].transform(split_codes, col_name="ICD-10")
@@ -38,5 +37,3 @@ def process_dataset(dataset, proc_code_type):
 process_dataset("sedd", "cpt_codes")
 process_dataset("sasd", "cpt_codes")
 process_dataset("sid", "ICD-10-procedures")
-
-

@@ -1,16 +1,16 @@
 #!/bin/sh
-#SBATCH --time 30:00
+#SBATCH --time 4:00:00
 #SBATCH -o run.out
 #SBATCH -e run.err
-#SBATCH -p nano -N 1
-#SBATCH --mail-user=mmakutonin@gwmail.gwu.edu
+#SBATCH -p tiny -N 1
+#SBATCH --mail-user={email_address}
 #SBATCH --mail-type=ALL
 #SBATCH -D /lustre/groups/meltzergrp/HCUP/{analysis_name}/hpc_workflows
 
-# # Activate Conda environment to run code
-# . /SMHS/home/mmakutonin/miniconda3/etc/profile.d/conda.sh
-# # conda create -n hcup pandas numpy scipy statsmodels scikit-learn matplotlib
-# conda activate hcup
+# Activate Conda environment to run code
+. /SMHS/home/mmakutonin/miniconda3/etc/profile.d/conda.sh
+# conda create -n hcup-test pandas numpy scipy statsmodels scikit-learn matplotlib
+conda activate hcup-test
 
 # # to prepare the directory for files
 # cd /lustre/groups/meltzergrp/HCUP/{analysis_name}
@@ -25,14 +25,14 @@
 # sinfo
 # squeue
 
-# old functionality
-module load python3
-python3 -m pip install pandas
-python3 -m pip install numpy
-python3 -m pip install scipy
-python3 -m pip install statsmodels
-python3 -m pip install scikit-learn
-python3 -m pip install matplotlib
+# # old functionality
+# module load python3
+# python3 -m pip install pandas
+# python3 -m pip install numpy
+# python3 -m pip install scipy
+# python3 -m pip install statsmodels
+# python3 -m pip install scikit-learn
+# python3 -m pip install matplotlib
 
 rm -r ../tables
 mkdir ../tables

@@ -97,10 +97,19 @@ def data_enrichment_function(sedd, sasd, sid, sid_ed, codes, linker_table):
             axis=1
         )
     
-    # linker_table[de_col_keys[0]] = code_linker(de_col_keys[0], init_visit=True).map({
+    # linker_table[de_col_keys[0]] = code_linker(de_col_keys[0], True).map({
     #     True: de_col_values[de_col_keys[0]][0],
     #     False: de_col_values[de_col_keys[0]][1]
     # })
+
+    # linker_table[de_col_keys[1]] = code_linker(de_col_keys[1], True).map({
+    #     True: de_col_values[de_col_keys[1]][1],
+    #     False: de_col_values[de_col_keys[1]][0]
+    # })
+    # linker_table[de_col_keys[1]] = code_linker(de_col_keys[1], False, False).map({
+    #     True: de_col_values[de_col_keys[1]][2],
+    #     False: np.nan #this way the previous array won't update
+    # }).combine_first(linker_table[de_col_keys[1]])
     
     return linker_table
 

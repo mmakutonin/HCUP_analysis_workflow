@@ -29,13 +29,13 @@ if not os.path.isdir(f"../tables/ttest"):
     os.mkdir(f"../tables/ttest")
 
 # %%
-demographic_cols = ['marital_status', 'initial_discharge_quarter', 'gender', 'race', 'payer']
-numerical_demographic_cols = ['median_zip_income', 'CMDF CCI', "Geriatric", "Pediatric"]
+demographic_cols = ['marital_status', 'initial_discharge_quarter', 'gender', 'race', 'payer', "Pediatric", "Geriatric"]
+numerical_demographic_cols = ['median_zip_income', 'CMDF CCI']
 def encode_dataset(dataset):
     encoded_dataset = pd.DataFrame(
         enc.fit_transform(dataset), dataset.index
     )
-    encoded_dataset.columns = enc.get_feature_names(dataset.columns)
+    encoded_dataset.columns = enc.get_feature_names_out(dataset.columns)
     return encoded_dataset
 def preprocess_dataset(dataset):
     #encode dataset demographics
@@ -168,5 +168,3 @@ for val in de_col_values[de_col_keys[1]]:
         full_data.groupby(['Obesity', 'Mood Disorders'])['initial_record_id'].count(),
         list(full_data.groupby('Obesity')['initial_record_id'].count()/2)*2
     )[1])
-
-

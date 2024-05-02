@@ -5,7 +5,7 @@
 import pandas as pd
 import numpy as np
 from utility_functions import load_file, pickle_file, starting_run, finished_run, print_to_drop
-from analysis_variables import de_col_keys, de_col_values, de_col_numerical_cols, demographic_tables, code_category_dict
+from analysis_variables import de_col_keys, de_col_values, demographic_tables, code_category_dict
 from scipy.stats import f_oneway, ttest_ind, sem, norm, t
 from statsmodels.stats.api import DescrStatsW, CompareMeans
 
@@ -161,19 +161,22 @@ def create_summary(groupby_col, save_filepath, tb, filter_criteria="`Cost (USD)`
         lambda total: f"{total} ({round(total/total_patients*100,1)}%)"
     )
     #Create summary tables
-    agg_table = num_full_dataset.apply(lambda x: pd.Series(
-        [DescrStatsW(x[column]) for column in x.columns],
-        index=x.columns)).T.drop(groupby_col)
+    agg_table = num_full_dataset.apply(
+        lambda x: pd.Series(
+            [DescrStatsW(x[column]) for column in x.columns],
+            index=x.columns
+        ), include_groups=False
+        ).T
     summary_table = agg_table.transform(
-        lambda row: [f"{round(val.mean, 1)} ({round(val.tconfint_mean(0.05)[0],1)}, {round(val.tconfint_mean(0.05)[1],1)})" for val in row] \
+        lambda row: [f"{round(val.mean, 1)} ({round(val.tconfint_mean(0.05)[0],1)}-{round(val.tconfint_mean(0.05)[1],1)})" for val in row] \
                     if row.name in summary_table_sum_cols else \
-                    [f"{round(val.mean*100,1)}% ({round(val.tconfint_mean(0.05)[0]*100,1)}, {round(val.tconfint_mean(0.05)[1]*100,1)}), {round(val.sum, 1)}" for val in row],
+                    [f"{round(val.mean*100,1)}% ({round(val.tconfint_mean(0.05)[0]*100,1)}-{round(val.tconfint_mean(0.05)[1]*100,1)}), {round(val.sum, 1)}" for val in row],
         axis=1
     )
     summary_table.columns = [f"{col} (%, 95% CI, N)" for col in summary_table.columns]
     if(len(summary_table.columns) == 2):
         summary_table["Difference (95% CI)"] = agg_table.agg(
-            lambda row: ("{} ({}, {})" if row.name in summary_table_sum_cols else "{}% ({}%, {}%)").format(
+            lambda row: ("{} ({}-{})" if row.name in summary_table_sum_cols else "{}% ({}-{})").format(
                 *[
                     round(val * (1 if row.name in summary_table_sum_cols else 100), 1)\
                     for val in [row[0].mean-row[1].mean, *CompareMeans(row[0], row[1]).tconfint_diff(0.05, usevar='unequal')]
@@ -209,5 +212,3 @@ def create_summary(groupby_col, save_filepath, tb, filter_criteria="`Cost (USD)`
 # %%
 for tb in demographic_tables:
     create_summary(tb["key"], tb["save_filepath"], tb, tb["query_string"])
-
-
