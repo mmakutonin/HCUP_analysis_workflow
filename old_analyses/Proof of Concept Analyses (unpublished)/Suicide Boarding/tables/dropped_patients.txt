@@ -1,0 +1,7 @@
+sedd rows: 13300 
+sid rows: 129 
+sasd rows: 381 
+sid_ed rows: 104 
+Dropped 3936 patients because initial_visit year = 2018 
+Dropped 1 patients because index was non-positive. 
+Dropped 1533 patients by censoring first 6 months. 

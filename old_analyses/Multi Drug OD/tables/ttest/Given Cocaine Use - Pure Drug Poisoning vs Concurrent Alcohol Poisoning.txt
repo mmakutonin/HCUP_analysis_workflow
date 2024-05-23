@@ -1,0 +1,20 @@
+Given Cocaine Use - Pure Drug Poisoning vs Concurrent Alcohol Poisoning 
+False    1021
+True       93 
+Logreg Results: 
+Area under the curve (AUC): 0.63 
+Model Accuracy: 0.91 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 38 
+PCA Results: 
+Area under the curve (AUC): 0.52 
+Model Accuracy: 0.76 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                        Metric             Mean True             Mean False   P value
+0                         Cost  4800.146 ± 1474.5836  8782.2637 ± 1099.8664  0.000065
+1       Inpatient Readmissions        0.043 ± 0.0415        0.0744 ± 0.0207  0.371904
+2              ED Readmissions       0.3118 ± 0.1373         0.238 ± 0.0388  0.625355
+3                         Died             0.0 ± nan              0.0 ± nan       NaN
+4                          LOS       1.7957 ± 0.4696         3.2165 ± 0.417  0.000027
+5  Ventilator on Initial Visit       0.0753 ± 0.0539              0.0 ± nan       NaN

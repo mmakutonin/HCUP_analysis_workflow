@@ -1,0 +1,13 @@
+sedd rows: 13660 
+sid rows: 11 
+sasd rows: 454 
+sid_ed rows: 11 
+Initial Patient Number:13264 
+Dropped 4058 patients because initial_visit year = 2018 
+Dropped 1 patients because index was non-positive. 
+Dropped 2266 patients by censoring first 6 months. 
+dropped 0 invalid patient(s) due to death on initial record. 
+dropped 0 invalid patient(s) due to death from unrelated cause. 
+0 records dropped due to zero SID and SEDD costs. 
+0 records dropped due to zero SID and SEDD costs. 
+0 records dropped due to zero SID and SEDD costs. 

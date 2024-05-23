@@ -1,0 +1,39 @@
+,Odds Ratio of ____ (95% CI),P-value
+Suicidal ideation,"1.64 (1.56, 1.72)",< 0.00001
+Nicotine Dependence,"0.8 (0.76, 0.85)",< 0.00001
+median_zip_income,"1.18 (1.13, 1.23)",< 0.00001
+Pediatric,"1.16 (1.1, 1.23)",1e-05
+Obesity,"0.92 (0.87, 0.96)",4e-05
+Diabetes Mellitus,"0.92 (0.87, 0.97)",0.0012
+Mood Disorders,"1.1 (1.03, 1.16)",0.0071
+Alcohol-Related Disorders,"1.05 (1.01, 1.09)",0.02999
+CMDF CCI,"1.05 (1.0, 1.1)",0.0517
+Hypertension,"1.05 (0.99, 1.1)",0.10516
+Ischemic Heart Disease,"0.97 (0.92, 1.01)",0.13805
+Geriatric,"1.03 (0.98, 1.09)",0.24489
+Hyperlipidemia,"0.99 (0.94, 1.04)",0.7996
+Depression,"1.0 (0.93, 1.06)",0.91028
+Aspirin,"1.0 (0.95, 1.05)",0.93991
+race_Hispanic,"9.41 (-1819773.86, 1819792.68)",1.0
+race_White,"0.49 (-3649237.58, 3649238.57)",1.0
+race_African-American,"0.64 (-3487532.35, 3487533.63)",1.0
+race_Native American,"1.03 (-460884.25, 460886.32)",1.0
+race_Other,"0.95 (-1220297.13, 1220299.02)",1.0
+race_Asian,"1.0 (-792780.6, 792782.59)",1.0
+payer_Medicaid,"0.83 (nan, nan)",
+payer_Medicare,"0.88 (nan, nan)",
+payer_No charge,"0.93 (nan, nan)",
+initial_discharge_quarter_2.0,"0.96 (nan, nan)",
+initial_discharge_quarter_1.0,"0.96 (nan, nan)",
+marital_status_Married,"0.97 (nan, nan)",
+marital_status_Single,"0.98 (nan, nan)",
+marital_status_Legally Separated,"0.99 (nan, nan)",
+marital_status_Widowed,"1.0 (nan, nan)",
+gender_Male,"1.0 (nan, nan)",
+gender_Female,"1.0 (nan, nan)",
+payer_Other,"1.03 (nan, nan)",
+initial_discharge_quarter_4.0,"1.03 (nan, nan)",
+initial_discharge_quarter_3.0,"1.05 (nan, nan)",
+marital_status_Divorced,"1.06 (nan, nan)",
+payer_Self-pay,"1.15 (nan, nan)",
+payer_Private insurance,"1.32 (nan, nan)",

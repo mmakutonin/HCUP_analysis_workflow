@@ -1,0 +1,20 @@
+Given Opioid Use - Concurrent Alcohol Poisoning vs Pure Drug Poisoning 
+False    9827
+True      413 
+Logreg Results: 
+Area under the curve (AUC): 0.56 
+Model Accuracy: 0.89 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 38 
+PCA Results: 
+Area under the curve (AUC): 0.52 
+Model Accuracy: 0.67 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                        Metric            Mean True           Mean False   P value
+0                         Cost  3025.624 ± 722.4851  2537.9577 ± 168.876  0.396638
+1       Inpatient Readmissions      0.0533 ± 0.0264      0.0444 ± 0.0046  1.029954
+2              ED Readmissions       0.385 ± 0.0983      0.2617 ± 0.0144  0.030808
+3                         Died            0.0 ± nan            0.0 ± nan       NaN
+4                          LOS      1.5351 ± 0.3118       1.127 ± 0.0646  0.024714
+5  Ventilator on Initial Visit      0.0242 ± 0.0148            0.0 ± nan       NaN

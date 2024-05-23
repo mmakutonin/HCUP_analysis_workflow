@@ -1,0 +1,20 @@
+Uncomplicated Colic - Given Admission - Delayed Surgery vs No Surgery 
+False    452
+True     121 
+Logreg Results: 
+Area under the curve (AUC): 0.79 
+Model Accuracy: 0.82 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 35 
+PCA Results: 
+Area under the curve (AUC): 0.69 
+Model Accuracy: 0.74 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                           Metric               Mean True            Mean False   P value
+0                            Cost  10368.2113 ± 1461.6385  8777.3427 ± 557.0422  0.095912
+1          Inpatient Readmissions          0.1653 ± 0.074        0.0642 ± 0.025  0.024363
+2                 ED Readmissions         0.0661 ± 0.0597        0.073 ± 0.0296  1.679169
+3                            Died         0.0413 ± 0.0356        0.0398 ± 0.018  1.882805
+4                             LOS         3.5372 ± 0.5365       3.7323 ± 0.3492  1.101723
+5  Post-Index Visit Cholecystitis         0.8264 ± 0.0678             0.0 ± nan       NaN

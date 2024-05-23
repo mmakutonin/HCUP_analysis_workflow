@@ -1,0 +1,20 @@
+Given Hallucinogen Use - Pure Drug Poisoning vs Concurrent Alcohol Poisoning 
+False    199
+True      29 
+Logreg Results: 
+Area under the curve (AUC): 0.78 
+Model Accuracy: 0.88 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 38 
+PCA Results: 
+Area under the curve (AUC): 0.58 
+Model Accuracy: 0.78 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                        Metric              Mean True             Mean False   P value
+0                         Cost  3092.1762 ± 2935.1636  3912.7008 ± 1998.3016  1.304598
+1       Inpatient Readmissions        0.0345 ± 0.0676        0.0251 ± 0.0218  1.595527
+2              ED Readmissions        0.2759 ± 0.2554        0.1709 ± 0.0873  0.901914
+3                         Died              0.0 ± nan              0.0 ± nan       NaN
+4                          LOS         0.931 ± 0.5911        1.3869 ± 0.4296  0.451956
+5  Ventilator on Initial Visit         0.069 ± 0.0939              0.0 ± nan       NaN

@@ -1,0 +1,39 @@
+,Odds Ratio of ____ (95% CI),P-value
+CMDF CCI,"0.58 (-0.27, 1.42)",0.20006
+Ischemic Heart Disease,"1.27 (0.87, 1.67)",0.23987
+Diabetes Mellitus,"1.42 (0.77, 2.07)",0.28631
+median_zip_income,"1.37 (0.78, 1.97)",0.29543
+Alcohol-Related Disorders,"1.16 (0.85, 1.46)",0.35117
+Depression,"0.84 (0.23, 1.45)",0.57568
+Mood Disorders,"1.15 (0.61, 1.69)",0.60676
+Hyperlipidemia,"0.9 (0.21, 1.59)",0.76022
+Obesity,"0.97 (0.61, 1.34)",0.88336
+Hypertension,"0.98 (0.39, 1.57)",0.95763
+Nicotine Dependence,"1.01 (0.53, 1.49)",0.96055
+Suicidal ideation,"0.05 (-846.83, 846.94)",0.99452
+Pediatric,"0.04 (-2259.69, 2259.76)",0.99771
+Geriatric,"1.0299232544880627e+17 (1.0299232538783827e+17, 1.0299232550977426e+17)",1.0
+payer_Other,"0.07 (-8116217.22, 8116217.37)",1.0
+race_Other,"0.05 (-14468326.42, 14468326.52)",1.0
+Aspirin,"0.0 (-151398616.86, 151398616.86)",1.0
+marital_status_Married,"0.1 (-14288575.92, 14288576.13)",1.0
+marital_status_Single,"0.07 (-17723626.09, 17723626.22)",1.0
+race_Native American,"0.44 (-5572527.29, 5572528.16)",1.0
+race_Hispanic,"0.06 (-22146354.12, 22146354.24)",1.0
+marital_status_Widowed,"0.51 (-5794202.73, 5794203.75)",1.0
+race_Asian,"0.36 (-9668345.77, 9668346.49)",1.0
+marital_status_Divorced,"0.36 (-10017576.15, 10017576.87)",1.0
+marital_status_Legally Separated,"0.56 (-6278097.2, 6278098.32)",1.0
+race_African-American,"3.74 (-41628386.66, 41628394.13)",1.0
+race_White,"3.32 (-44324956.26, 44324962.9)",1.0
+payer_Medicaid,"0.58 (-21728035.52, 21728036.67)",1.0
+payer_Private insurance,"0.64 (-19059873.74, 19059875.02)",1.0
+initial_discharge_quarter_2.0,"1.15 (-7211279.89, 7211282.2)",1.0
+payer_Self-pay,"0.75 (-16808352.2, 16808353.7)",1.0
+initial_discharge_quarter_4.0,"1.24 (-27618552.39, 27618554.86)",1.0
+initial_discharge_quarter_1.0,"1.13 (-15867182.86, 15867185.11)",1.0
+initial_discharge_quarter_3.0,"0.88 (-28068368.43, 28068370.19)",1.0
+payer_Medicare,"1.02 (-14017753.84, 14017755.88)",1.0
+gender_Male,"0.98 (nan, nan)",
+gender_Female,"1.02 (nan, nan)",
+payer_No charge,"252719.28 (nan, nan)",

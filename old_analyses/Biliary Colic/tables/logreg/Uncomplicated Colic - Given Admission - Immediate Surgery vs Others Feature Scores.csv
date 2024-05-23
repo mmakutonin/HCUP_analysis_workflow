@@ -1,0 +1,36 @@
+,Odds Ratio of ____ (95% CI),P-value
+age,"0.51 (0.2, 0.82)",2.2470873169464958e-05
+Aspirin,"0.71 (0.44, 0.98)",0.012344880215331748
+Ischemic Heart Disease,"0.75 (0.5, 1.0)",0.0223928220146211
+Hypertension,"0.77 (0.53, 1.0)",0.027507492969986606
+Alcohol-Related Disorders,"0.73 (0.44, 1.03)",0.03841238290504824
+Nicotine Dependence,"0.85 (0.66, 1.05)",0.11375980040794476
+Obesity,"0.94 (0.76, 1.13)",0.5361017778368689
+median_zip_income,"1.06 (0.86, 1.26)",0.5570842258944347
+Mood Disorders,"1.03 (0.85, 1.2)",0.7752820487424315
+Diabetes Mellitus,"1.01 (0.81, 1.21)",0.9203791306850874
+CMDF CCI,"0.99 (0.82, 1.17)",0.9398577170566578
+Hyperlipidemia,"1.01 (0.79, 1.22)",0.9482343910984373
+marital_status_Legally Separated,"0.92 (-1196093.51, 1196095.35)",0.9999998933422392
+marital_status_Widowed,"0.85 (-2410338.27, 2410339.97)",0.9999998952192575
+initial_discharge_quarter_2,"0.79 (-4012698.66, 4012700.24)",0.9999999101620358
+initial_discharge_quarter_1,"1.13 (-3912261.5, 3912263.76)",0.999999950410839
+marital_status_Married,"0.87 (-4559592.15, 4559593.89)",0.9999999527108764
+marital_status_Single,"0.9 (-4401484.58, 4401486.37)",0.999999961169786
+initial_discharge_quarter_3,"0.9 (-5155808.48, 5155810.27)",0.9999999666445725
+initial_discharge_quarter_4,"0.91 (-5069997.66, 5069999.48)",0.9999999709959857
+marital_status_Divorced,"1.0 (-2287473.39, 2287475.4)",0.9999999987899246
+payer_Private insurance,"0.29 (nan, nan)",
+payer_Medicaid,"0.3 (nan, nan)",
+race_Native American,"0.33 (nan, nan)",
+payer_Medicare,"0.36 (nan, nan)",
+payer_Self-pay,"0.52 (nan, nan)",
+payer_Other,"0.56 (nan, nan)",
+race_Hispanic,"0.9 (nan, nan)",
+gender_Male,"0.96 (nan, nan)",
+race_Asian,"1.04 (nan, nan)",
+gender_Female,"1.05 (nan, nan)",
+race_African-American,"1.06 (nan, nan)",
+race_Other,"1.09 (nan, nan)",
+race_White,"1.22 (nan, nan)",
+payer_No charge,"3869127.38 (nan, nan)",

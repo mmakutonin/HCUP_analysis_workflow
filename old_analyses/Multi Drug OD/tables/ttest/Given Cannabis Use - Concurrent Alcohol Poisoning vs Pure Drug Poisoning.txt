@@ -1,0 +1,20 @@
+Given Cannabis Use - Concurrent Alcohol Poisoning vs Pure Drug Poisoning 
+False    516
+True      68 
+Logreg Results: 
+Area under the curve (AUC): 0.68 
+Model Accuracy: 0.89 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 38 
+PCA Results: 
+Area under the curve (AUC): 0.6 
+Model Accuracy: 0.68 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                        Metric              Mean True            Mean False   P value
+0                         Cost  2799.0459 ± 1523.3128  3233.6514 ± 915.3107  1.265149
+1       Inpatient Readmissions        0.0147 ± 0.0288       0.0213 ± 0.0125  1.361644
+2              ED Readmissions        0.1029 ± 0.0836       0.1066 ± 0.0411  1.877914
+3                         Died              0.0 ± nan             0.0 ± nan       NaN
+4                          LOS        0.9265 ± 0.3394       1.2519 ± 0.2406  0.254759
+5  Ventilator on Initial Visit        0.0588 ± 0.0563             0.0 ± nan       NaN

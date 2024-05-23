@@ -1,0 +1,20 @@
+Complicated Colic - Given Discharge - Delayed Surgery vs Delayed Emergency 
+True     364
+False    107 
+Logreg Results: 
+Area under the curve (AUC): 0.66 
+Model Accuracy: 0.78 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 35 
+PCA Results: 
+Area under the curve (AUC): 0.6 
+Model Accuracy: 0.61 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                           Metric             Mean True             Mean False       P value
+0                            Cost  3572.7346 ± 609.5987  9222.0327 ± 1787.7163  6.965483e-08
+1          Inpatient Readmissions       0.1813 ± 0.0425        0.6262 ± 0.0957  9.548856e-14
+2                 ED Readmissions       0.0934 ± 0.0369        1.1028 ± 0.0733  2.173658e-55
+3                            Died       0.0082 ± 0.0093              0.0 ± nan  1.665267e-01
+4                             LOS        1.272 ± 0.2079        3.5888 ± 0.6599  2.395160e-09
+5  Post-Index Visit Cholecystitis       0.9643 ± 0.0191              0.0 ± nan           NaN

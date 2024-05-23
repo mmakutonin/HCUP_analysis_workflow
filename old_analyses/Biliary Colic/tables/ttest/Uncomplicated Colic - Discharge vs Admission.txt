@@ -1,0 +1,20 @@
+Uncomplicated Colic - Discharge vs Admission 
+True     6148
+False     783 
+Logreg Results: 
+Area under the curve (AUC): 0.75 
+Model Accuracy: 0.72 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 35 
+PCA Results: 
+Area under the curve (AUC): 0.72 
+Model Accuracy: 0.71 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                           Metric            Mean True            Mean False        P value
+0                            Cost  1837.0833 ± 91.9638  9875.4523 ± 562.5712  3.296075e-119
+1          Inpatient Readmissions      0.0813 ± 0.0075       0.0983 ± 0.0232   3.418993e-01
+2                 ED Readmissions      0.1984 ± 0.0125       0.0971 ± 0.0254   7.117298e-12
+3                            Died       0.006 ± 0.0019       0.0332 ± 0.0126   6.083607e-05
+4                             LOS      0.7001 ± 0.0361       3.8736 ± 0.2654   1.525958e-91
+5  Post-Index Visit Cholecystitis      0.4053 ± 0.0123             0.0 ± nan            NaN

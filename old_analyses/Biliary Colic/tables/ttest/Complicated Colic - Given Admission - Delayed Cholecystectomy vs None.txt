@@ -1,0 +1,20 @@
+Complicated Colic - Given Admission - Delayed Cholecystectomy vs None 
+False    1141
+True      398 
+Logreg Results: 
+Area under the curve (AUC): 0.67 
+Model Accuracy: 0.69 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 35 
+PCA Results: 
+Area under the curve (AUC): 0.59 
+Model Accuracy: 0.65 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                           Metric               Mean True            Mean False       P value
+0                            Cost  12267.5147 ± 1020.2851  9409.8765 ± 470.7721  1.646824e-06
+1          Inpatient Readmissions         0.2864 ± 0.0516       0.0745 ± 0.0174  2.415193e-13
+2                 ED Readmissions         0.0678 ± 0.0275       0.0675 ± 0.0166  1.965544e+00
+3                            Died           0.005 ± 0.007       0.0508 ± 0.0128  1.627280e-09
+4                             LOS         5.0879 ± 0.4476       4.3488 ± 0.2294  8.230036e-03
+5  Post-Index Visit Cholecystitis         0.9447 ± 0.0225             0.0 ± nan           NaN

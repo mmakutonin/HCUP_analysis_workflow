@@ -1,0 +1,36 @@
+,Odds Ratio of ____ (95% CI),P-value
+Obesity,"0.76 (0.72, 0.81)",9.018297254244847e-34
+age,"0.72 (0.64, 0.8)",1.5652825497069837e-16
+Mood Disorders,"0.9 (0.85, 0.94)",7.77294950972104e-07
+Alcohol-Related Disorders,"0.93 (0.88, 0.97)",0.00039686242067352634
+Hyperlipidemia,"0.93 (0.88, 0.98)",0.006053375145888274
+Hypertension,"0.93 (0.88, 0.99)",0.010768305029741432
+CMDF CCI,"0.96 (0.91, 1.01)",0.10256882133026472
+Nicotine Dependence,"0.97 (0.92, 1.01)",0.17956541377636548
+median_zip_income,"0.97 (0.92, 1.02)",0.22069701386849017
+Ischemic Heart Disease,"0.97 (0.93, 1.02)",0.22522640623561552
+Aspirin,"0.98 (0.94, 1.03)",0.4774814341425846
+Diabetes Mellitus,"1.01 (0.96, 1.06)",0.7461652482251797
+initial_discharge_quarter_4,"1.03 (-660839.78, 660841.84)",0.9999999357132497
+initial_discharge_quarter_3,"0.97 (-672015.74, 672017.69)",0.9999999410406367
+initial_discharge_quarter_1,"0.98 (-509927.88, 509929.85)",0.9999999418025741
+initial_discharge_quarter_2,"1.02 (-523015.47, 523017.5)",0.9999999554226898
+gender_Male,"0.97 (-2905849.34, 2905851.27)",0.9999999832182528
+gender_Female,"1.03 (-2905849.27, 2905851.34)",0.9999999832182528
+race_Hispanic,"0.86 (nan, nan)",
+payer_Medicaid,"0.94 (nan, nan)",
+race_Asian,"0.95 (nan, nan)",
+payer_Medicare,"0.96 (nan, nan)",
+payer_Private insurance,"0.96 (nan, nan)",
+marital_status_Legally Separated,"0.99 (nan, nan)",
+marital_status_Married,"1.0 (nan, nan)",
+marital_status_Single,"1.0 (nan, nan)",
+marital_status_Divorced,"1.0 (nan, nan)",
+marital_status_Widowed,"1.03 (nan, nan)",
+race_Native American,"1.03 (nan, nan)",
+payer_Other,"1.03 (nan, nan)",
+payer_No charge,"1.04 (nan, nan)",
+race_Other,"1.05 (nan, nan)",
+race_White,"1.05 (nan, nan)",
+race_African-American,"1.12 (nan, nan)",
+payer_Self-pay,"1.17 (nan, nan)",

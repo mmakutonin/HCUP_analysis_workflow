@@ -1,0 +1,101 @@
+level_0,level_1,No Surgery (N=706)
+Cost,CI,(601.47-1153.6)
+Cost,CI,(601.47-1153.6)
+Cost,mean,877.5368271954674
+Cost,sem,140.85169465281572
+ED_revisits,CI,(0.03-0.06)
+ED_revisits,CI,(0.03-0.06)
+ED_revisits,mean,0.043909348441926344
+ED_revisits,sem,0.008461837663258684
+age,CI,(30.55-32.34)
+age,CI,(30.55-32.34)
+age,mean,31.44759206798867
+age,sem,0.45771197598651076
+died,CI,(nan-nan)
+died,CI,(nan-nan)
+died,mean,0.0
+died,sem,0.0
+has alcohol-related disorders,CI,(0.08-0.13)
+has alcohol-related disorders,CI,(0.08-0.13)
+has alcohol-related disorders,mean,0.1048158640226629
+has alcohol-related disorders,sem,0.011536528397997169
+has aspirin,CI,(0.0-0.02)
+has aspirin,CI,(0.0-0.02)
+has aspirin,mean,0.0113314447592068
+has aspirin,sem,0.003986331810495706
+has biliary colic with inflammation,CI,(-0.0-0.0)
+has biliary colic with inflammation,CI,(-0.0-0.0)
+has biliary colic with inflammation,mean,0.00141643059490085
+has biliary colic with inflammation,sem,0.0014164305949008504
+has diabetes mellitus,CI,(0.07-0.11)
+has diabetes mellitus,CI,(0.07-0.11)
+has diabetes mellitus,mean,0.0906515580736544
+has diabetes mellitus,sem,0.010813299736666762
+has hyperlipidemia,CI,(0.02-0.05)
+has hyperlipidemia,CI,(0.02-0.05)
+has hyperlipidemia,mean,0.03824362606232295
+has hyperlipidemia,sem,0.007222998250557565
+has ischemic heart disease,CI,(0.01-0.02)
+has ischemic heart disease,CI,(0.01-0.02)
+has ischemic heart disease,mean,0.015580736543909348
+has ischemic heart disease,sem,0.00466433232284702
+has mood disorders,CI,(0.21-0.27)
+has mood disorders,CI,(0.21-0.27)
+has mood disorders,mean,0.23937677053824363
+has mood disorders,sem,0.016070568326391765
+has nicotine dependence,CI,(0.45-0.52)
+has nicotine dependence,CI,(0.45-0.52)
+has nicotine dependence,mean,0.4830028328611898
+has nicotine dependence,sem,0.01882020554108993
+has obesity,CI,(0.01-0.02)
+has obesity,CI,(0.01-0.02)
+has obesity,mean,0.015580736543909348
+has obesity,sem,0.004664332322847025
+has systemic hypertension,CI,(0.14-0.19)
+has systemic hypertension,CI,(0.14-0.19)
+has systemic hypertension,mean,0.16572237960339944
+has systemic hypertension,sem,0.014003974739817817
+has_medicaid,CI,(0.51-0.58)
+has_medicaid,CI,(0.51-0.58)
+has_medicaid,mean,0.5481586402266289
+has_medicaid,sem,0.018743537718390844
+has_medicare,CI,(0.05-0.09)
+has_medicare,CI,(0.05-0.09)
+has_medicare,mean,0.06940509915014165
+has_medicare,sem,0.009571532211846343
+has_private_insurance,CI,(0.23-0.3)
+has_private_insurance,CI,(0.23-0.3)
+has_private_insurance,mean,0.26487252124645894
+has_private_insurance,sem,0.0166190128123833
+inpatient_visits,CI,(0.05-0.09)
+inpatient_visits,CI,(0.05-0.09)
+inpatient_visits,mean,0.06940509915014165
+inpatient_visits,sem,0.010181795389304063
+is_african_american_or_hispanic,CI,(0.63-0.7)
+is_african_american_or_hispanic,CI,(0.63-0.7)
+is_african_american_or_hispanic,mean,0.6614730878186968
+is_african_american_or_hispanic,sem,0.017822069429165834
+is_female,CI,(0.46-0.54)
+is_female,CI,(0.46-0.54)
+is_female,mean,0.5
+is_female,sem,0.01883108942886774
+is_married,CI,(0.08-0.12)
+is_married,CI,(0.08-0.12)
+is_married,mean,0.10056657223796034
+is_married,sem,0.011327048953487646
+is_uninsured,CI,(0.07-0.12)
+is_uninsured,CI,(0.07-0.12)
+is_uninsured,mean,0.09490084985835694
+is_uninsured,sem,0.011037953772397606
+is_unmarried,CI,(0.88-0.92)
+is_unmarried,CI,(0.88-0.92)
+is_unmarried,mean,0.8994334277620396
+is_unmarried,sem,0.011327048953487646
+is_white,CI,(0.28-0.34)
+is_white,CI,(0.28-0.34)
+is_white,mean,0.3101983002832861
+is_white,sem,0.017421569527482805
+median_zip_income,CI,(2.54-2.71)
+median_zip_income,CI,(2.54-2.71)
+median_zip_income,mean,2.6274787535410766
+median_zip_income,sem,0.0444863873547679

@@ -1,0 +1,42 @@
+,Odds Ratio of ____ (95% CI),P-value
+Mood Disorders,"1.06 (1.01, 1.11)",0.03439
+Obesity,"1.03 (0.99, 1.08)",0.1425
+Anxiety Disorder,"1.03 (0.98, 1.08)",0.2765
+Family History of Drug Abuse,"1.02 (0.98, 1.07)",0.3695
+Hypertension,"1.01 (0.96, 1.07)",0.61127
+Opioid Use Disorder,"1.01 (0.97, 1.05)",0.6458
+Cocaine or Other Stimulant Use Disorder,"1.01 (0.96, 1.05)",0.69914
+Nicotine Dependence,"0.99 (0.95, 1.04)",0.76938
+Alcohol-Related Disorders,"1.01 (0.96, 1.05)",0.79465
+Aspirin,"1.01 (0.96, 1.05)",0.79799
+median_zip_income,"1.01 (0.96, 1.05)",0.81659
+Hyperlipidemia,"1.01 (0.96, 1.05)",0.82914
+Recurrent Seizures,"1.0 (0.96, 1.05)",0.843
+age,"1.01 (0.95, 1.06)",0.85465
+Ischemic Heart Disease,"1.0 (0.95, 1.04)",0.85631
+Diabetes Mellitus,"1.0 (0.95, 1.04)",0.87449
+Long-term Opioid Use,"1.0 (0.96, 1.04)",0.94393
+CMDF CCI,"1.0 (0.95, 1.05)",0.95145
+race_Native American,"0.99 (-44105.84, 44107.82)",1.0
+race_Asian,"1.01 (-81930.74, 81932.76)",1.0
+race_Other,"1.01 (-140613.06, 140615.08)",1.0
+payer_No charge,"1.0 (-131758.03, 131760.02)",1.0
+race_Hispanic,"1.0 (-152563.03, 152565.02)",1.0
+race_African-American,"0.99 (-545594.07, 545596.04)",1.0
+payer_Medicare,"1.02 (-932998.73, 933000.78)",1.0
+race_White,"1.01 (-559603.52, 559605.54)",1.0
+payer_Private insurance,"1.02 (-1000530.14, 1000532.18)",1.0
+payer_Self-pay,"0.99 (-961038.52, 961040.49)",1.0
+payer_Other,"0.99 (-472145.41, 472147.4)",1.0
+payer_Medicaid,"0.99 (-1390145.36, 1390147.34)",1.0
+marital_status_Divorced,"1.01 (-4662592.2, 4662594.22)",1.0
+marital_status_Legally Separated,"0.99 (-3075806.95, 3075808.94)",1.0
+marital_status_Married,"1.0 (-6329108.58, 6329110.59)",1.0
+marital_status_Single,"0.99 (-8019860.42, 8019862.41)",1.0
+marital_status_Widowed,"1.0 (-2772008.92, 2772010.92)",1.0
+gender_Female,"1.01 (-224955547.88, 224955549.9)",1.0
+gender_Male,"0.99 (-224990260.71, 224990262.69)",1.0
+initial_discharge_quarter_2,"0.99 (nan, nan)",
+initial_discharge_quarter_4,"1.0 (nan, nan)",
+initial_discharge_quarter_3,"1.0 (nan, nan)",
+initial_discharge_quarter_1,"1.01 (nan, nan)",
