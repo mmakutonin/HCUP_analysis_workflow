@@ -1,31 +1,22 @@
-# %%
 import pandas as pd
 import numpy as np
 from utility_functions import load_file, pickle_file, starting_run, finished_run, print_to_drop
 from data_reading_functions import code_lengths
-from analysis_variables import procedure_codes, data_enrichment_function, code_category_dict, init_visit_datasets
 
-# %% [markdown]
-# ### Imports & File Loading
+def load_datasets_for_linkage(analysis_name:str):
+    sedd = load_file("sedd_core_filtered.pickle", analysis_name)
+    sasd = load_file("sasd_core_filtered.pickle", analysis_name)
+    sid = load_file("sid_core_filtered.pickle", analysis_name)
+    sid_ed = load_file("sedd_appendix.pickle", analysis_name)
+    # initialize dropped_patients file
+    with open(f"../results/{analysis_name}/tables/dropped_patients.txt", 'w') as f:
+        f.write(f"sedd rows: {sedd.shape[0]} \n")
+        f.write(f"sid rows: {sid.shape[0]} \n")
+        f.write(f"sasd rows: {sasd.shape[0]} \n")
+        f.write(f"sid_ed rows: {sid_ed.shape[0]} \n")
+    return sedd, sasd, sid, sid_ed
 
-# %%
-sedd = load_file("sedd_core_filtered.pickle")
-sasd = load_file("sasd_core_filtered.pickle")
-sid = load_file("sid_core_filtered.pickle")
-sid_ed = load_file("sedd_appendix.pickle")
-null_codes = {name: '                       '[:length] for name, length in code_lengths.items()}
-# initialize dropped_patients file
-with open(f"../tables/dropped_patients.txt", 'w') as f:
-    f.write(f"sedd rows: {sedd.shape[0]} \n")
-    f.write(f"sid rows: {sid.shape[0]} \n")
-    f.write(f"sasd rows: {sasd.shape[0]} \n")
-    f.write(f"sid_ed rows: {sid_ed.shape[0]} \n")
-
-# %% [markdown]
-# ### Utility Functions
-
-# %%
-def create_linker_table(sedd, sid_ed, sid, sasd, include_sedd = False, include_sid_ed = False, include_sid = False, include_sasd = False):
+def create_linker_table(sedd, sid_ed, sid, sasd, analysis_name:str, include_sedd = False, include_sid_ed = False, include_sid = False, include_sasd = False):
     def create_linker_table(dataset, sid_flag):
         join_dataset = sid if sid_flag else dataset
         dataset = dataset.reset_index().groupby("visit_link")[["record_id", "year"]].min().join(
@@ -53,22 +44,21 @@ def create_linker_table(sedd, sid_ed, sid, sasd, include_sedd = False, include_s
     linker_table = pd.concat(table_list).sort_values(["initial_year", "initial_discharge_quarter"])\
     .reset_index().drop_duplicates("visit_link", keep="first")\
     .set_index("visit_link")
-    print_to_drop(f"Dropped {(linker_table['initial_year'] >= 2021).sum()} patients because initial_visit year = 2021")
+    print_to_drop(f"Dropped {(linker_table['initial_year'] >= 2021).sum()} patients because initial_visit year = 2021", analysis_name)
     linker_table = linker_table[linker_table["initial_year"] < 2021]
     
     #add max_year based on initial_year (assume following for 1 year)
     linker_table["max_year"] = (linker_table["initial_year"] + 1)
     
-    print_to_drop(f"Dropped {(linker_table.index <= 0).sum()} patients because index was non-positive.")
+    print_to_drop(f"Dropped {(linker_table.index <= 0).sum()} patients because index was non-positive.", analysis_name)
     return linker_table.loc[linker_table.index > 0, :]
 
-# %%
-def censor_first_6_mos(linker_table):
+def censor_first_6_mos(linker_table, analysis_name:str):
     min_year = linker_table["initial_year"].min()
     censored_table = linker_table.query(
         f"initial_year > {min_year} or initial_discharge_quarter > 2"
     )
-    print_to_drop(f"Dropped {linker_table.shape[0] - censored_table.shape[0]} patients by censoring first 6 months.")
+    print_to_drop(f"Dropped {linker_table.shape[0] - censored_table.shape[0]} patients by censoring first 6 months.", analysis_name)
     return censored_table
 
 # %%
@@ -81,7 +71,6 @@ def filter_data_on_year(sedd, sasd, sid, sid_ed, linker_table):
         ).index] for dataset in [sedd, sasd, sid, sid_ed]
     )
 
-# %%
 def count_admits(sedd, sasd, sid, sid_ed, linker_table):
     def count_visits(dataset, col_name):
         return dataset.join(linker_table, on="visit_link", rsuffix="_x")\
@@ -94,8 +83,8 @@ def count_admits(sedd, sasd, sid, sid_ed, linker_table):
         count_visits(sasd, "Surgery Visits")).join(
         count_visits(sid, "Inpatient Readmissions")).fillna(0)
 
-# %%
 def create_code_lookup_table(sedd, sasd, sid, linker_table):
+    null_codes = {name: '                       '[:length] for name, length in code_lengths.items()}
     def preprocess_dataset_on_init_chart(dataset):
         return linker_table.join(
             dataset, on="initial_record_id", how="inner", rsuffix="_x"
@@ -162,8 +151,7 @@ def create_code_lookup_table(sedd, sasd, sid, linker_table):
                     data_list.append(data_init)
     return pd.concat(data_list).fillna(False)
 
-# %%
-def enrich_comorbidities(codes):
+def enrich_comorbidities(codes, code_category_dict):
     visit_codes = codes.reset_index().groupby("visit_link")["codes"]
     return pd.concat([
         visit_codes.apply(
@@ -171,7 +159,6 @@ def enrich_comorbidities(codes):
         ).rename(key) for key, codes in code_category_dict.items()
     ], axis=1).astype("int")
 
-# %%
 def calculate_cci_score(linker_table, comorbidities): # based on https://www.mdcalc.com/charlson-comorbidity-index-cci#evidence
     cci = comorbidities.agg(
         lambda x: 1 if x["Myocardial Infarction History"] else 0 + \
@@ -191,7 +178,6 @@ def calculate_cci_score(linker_table, comorbidities): # based on https://www.mdc
     linker_table['CMDF CCI'] = cci
     return linker_table
 
-# %%
 def calc_charges(sedd, sid, linker_table):
     def charges_for_dataset(dataset):
         return dataset.set_index("visit_link")["total_charges"].reset_index().groupby("visit_link")["total_charges"].sum()
@@ -202,7 +188,6 @@ def calc_charges(sedd, sid, linker_table):
     linker_table["SID Charges"] = linker_table["SID Charges"].fillna(0)
     return linker_table
 
-# %%
 def calc_LOS(linker_table, sedd, sid, sasd):
     def calc_dataset_los(dataset):
         return dataset.query("length_of_stay >= 0").groupby("visit_link")["length_of_stay"].sum()
@@ -214,34 +199,36 @@ def calc_LOS(linker_table, sedd, sid, sasd):
     + linker_table["Inpatient LOS"].fillna(0) + linker_table["Outpatient LOS"].fillna(0)
     return linker_table
 
-# %% [markdown]
-# ### Main Code
-
-# %%
-starting_run("process full datasets")
-linker_table = create_linker_table(
-    sedd, sid_ed, sid, sasd,
-    include_sedd = init_visit_datasets["sedd"],
-    include_sid_ed = init_visit_datasets["sid_ed"],
-    include_sid = init_visit_datasets["sid"],
-    include_sasd = init_visit_datasets["sasd"]
-)
-linker_table = censor_first_6_mos(linker_table)
-sedd, sasd, sid, sid_ed = filter_data_on_year(sedd, sasd, sid, sid_ed, linker_table)
-linker_table = count_admits(sedd, sasd, sid, sid_ed, linker_table)
-codes = create_code_lookup_table(sedd, sasd, sid, linker_table)
-comorbidities = enrich_comorbidities(codes)
-linker_table = calculate_cci_score(linker_table, comorbidities)
-linker_table = calc_charges(sedd, sid, linker_table)
-linker_table = calc_LOS(linker_table, sedd, sid, sasd)
-linker_table = enrich_disposition_categories(linker_table)
-linker_table = data_enrichment_function(sedd, sasd, sid, sid_ed, codes, linker_table)
-starting_run("store datasets")
-pickle_file("filtered_dataset.pickle", linker_table)
-pickle_file("filtered_dataset_codes.pickle", codes)
-pickle_file("filtered_sid_data.pickle", sid)
-pickle_file("filtered_sedd_data.pickle", sedd)
-pickle_file("filtered_sid_ed_data.pickle", sid_ed)
-pickle_file("filtered_sasd_data.pickle", sasd)
-pickle_file("comorbidities.pickle", comorbidities)
-finished_run()
+def create_linked_datasets(
+        analysis_name: str,
+        data_enrichment_function: callable,
+        code_category_dict: dict[str, list[str]],
+        init_visit_datasets: dict[str, bool]
+    ):
+    sedd, sasd, sid, sid_ed = load_datasets_for_linkage(analysis_name)
+    starting_run("process full datasets")
+    linker_table = create_linker_table(
+        sedd, sid_ed, sid, sasd, analysis_name,
+        include_sedd = init_visit_datasets["sedd"],
+        include_sid_ed = init_visit_datasets["sid_ed"],
+        include_sid = init_visit_datasets["sid"],
+        include_sasd = init_visit_datasets["sasd"]
+    )
+    linker_table = censor_first_6_mos(linker_table, analysis_name)
+    sedd, sasd, sid, sid_ed = filter_data_on_year(sedd, sasd, sid, sid_ed, linker_table)
+    linker_table = count_admits(sedd, sasd, sid, sid_ed, linker_table)
+    codes = create_code_lookup_table(sedd, sasd, sid, linker_table)
+    comorbidities = enrich_comorbidities(codes, code_category_dict)
+    linker_table = calculate_cci_score(linker_table, comorbidities)
+    linker_table = calc_charges(sedd, sid, linker_table)
+    linker_table = calc_LOS(linker_table, sedd, sid, sasd)
+    linker_table = data_enrichment_function(sedd, sasd, sid, sid_ed, codes, linker_table)
+    starting_run("store datasets")
+    pickle_file("filtered_dataset.pickle", analysis_name, linker_table)
+    pickle_file("filtered_dataset_codes.pickle", analysis_name, codes)
+    pickle_file("filtered_sid_data.pickle", analysis_name, sid)
+    pickle_file("filtered_sedd_data.pickle", analysis_name, sedd)
+    pickle_file("filtered_sid_ed_data.pickle", analysis_name, sid_ed)
+    pickle_file("filtered_sasd_data.pickle", analysis_name, sasd)
+    pickle_file("comorbidities.pickle", analysis_name, comorbidities)
+    finished_run()

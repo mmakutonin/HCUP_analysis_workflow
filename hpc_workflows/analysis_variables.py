@@ -64,15 +64,6 @@ def dataset_filtering_function(dataset_name, dataset_core, proc_code_type):
 
 # Data Enrichment
 # Separates records/patients into subgroups for statistical analysis. Currently _________
-
-# if using sedd/sasd files, can use code descriptors found at https://hcup-us.ahrq.gov/db/vars/dispuniform/nisnote.jsp to implement dict
-dispo_dict = {
-    # "Col_name": [int codes included]
-}
-def enrich_disposition_categories(linker_table):
-    for key, value in dispo_dict.items():
-        linker_table[key] = linker_table["disposition_code"].transform(lambda code: code in value)
-    return linker_table
     
 de_col_keys = [
     # "Key Name", ...
@@ -113,24 +104,7 @@ def data_enrichment_function(sedd, sasd, sid, sid_ed, codes, linker_table):
     
     return linker_table
 
-sid_inflation_adjustment = pd.DataFrame([
-    #needed for 2.3, based on annual inflation data from Bureau of Labor Statistics
-    #https://data.bls.gov/pdq/SurveyOutputServlet
-    {'year':2016, 'discharge_quarter': 1, 'inflation_adjustment': 237.111/251.107},
-    {'year':2016, 'discharge_quarter': 2, 'inflation_adjustment': 240.229/251.107},
-    {'year':2016, 'discharge_quarter': 3, 'inflation_adjustment': 240.849/251.107},
-    {'year':2016, 'discharge_quarter': 4, 'inflation_adjustment': 241.353/251.107},
-    {'year':2017, 'discharge_quarter': 1, 'inflation_adjustment': 243.603/251.107},
-    {'year':2017, 'discharge_quarter': 2, 'inflation_adjustment': 244.733/251.107},
-    {'year':2017, 'discharge_quarter': 3, 'inflation_adjustment': 245.519/251.107},
-    {'year':2017, 'discharge_quarter': 4, 'inflation_adjustment': 246.669/251.107},
-    {'year':2018, 'discharge_quarter': 1, 'inflation_adjustment': 248.991/251.107},
-    {'year':2018, 'discharge_quarter': 2, 'inflation_adjustment': 251.588/251.107},
-    {'year':2018, 'discharge_quarter': 3, 'inflation_adjustment': 252.146/251.107},
-    {'year':2018, 'discharge_quarter': 4, 'inflation_adjustment': 252.038/251.107},
-]).set_index(['year', 'discharge_quarter'])
-
-demographic_tables = [
+demographic_table_configurations = [
     # {
     #     "key": de_col_keys[0],
     #     "query_string": "`Cost (USD)` >= 0", #Universal filter
@@ -162,6 +136,7 @@ logreg_targets = {
     #     ].eq(Target Value),
 }
 
+'''Define columns to be tested via univariate T-test in 03-2.py'''
 outcome_cols = [
     # for outcome variable in de_col_keys, format is:
     # {"name": "de_col_key", "type": "string | number", "positive_class": "de_col_value"}
@@ -172,7 +147,7 @@ outcome_cols = [
     {"name": "LOS", "type": "number"},
 ]
 
-chart_plotting = [
+chart_plotting_configurations = [
     # {
     #     'metric':'Cost',
     #     'y_axis_label': 'Cost (USD)',

@@ -6,19 +6,19 @@ from scipy.stats import chi2
 import pandas as pd
 import numpy as np
 
-# loads a pickled file using a relative path from the ../data/ directory.
-def load_file(data_path):
-    with open('../pickled_data/' + data_path, "rb") as input_file:
+# loads a pickled file using a relative path.
+def load_file(data_path:str, analysis_name:str):
+    with open(f"../pickled_data/{analysis_name}/" + data_path, "rb") as input_file:
         return pickle.load(input_file)
 
-# saves a Python object to a pickled file using a relative path from the ../data/ directory.
-def pickle_file(data_path, python_obj):
-    with open('../pickled_data/' + data_path, 'wb') as pickle_file:
+# saves a Python object to a pickled file using a relative path.
+def pickle_file(data_path:str, analysis_name:str, python_obj):
+    with open(f"../pickled_data/{analysis_name}/" + data_path, 'wb') as pickle_file:
         pickle.dump(python_obj, pickle_file, protocol=pickle.DEFAULT_PROTOCOL)
 
 # prints to file tracking dropped patients.
-def print_to_drop(print_string):
-    with open(f"../tables/dropped_patients.txt", 'a') as f:
+def print_to_drop(print_string: str, analysis_name: str):
+    with open(f"../results/{analysis_name}/tables/dropped_patients.txt", 'a') as f:
         f.write(print_string + " \n")
         
 # prints operation start dialogue
