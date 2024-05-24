@@ -2,7 +2,7 @@
 import pandas as pd
 from utility_functions import starting_run, finished_run
 
-data_dir = '../../raw_data/'
+data_dir = '../raw_data/'
 
 # Reads HCUP text data into dataframe
 # Reference structure is {"col_name": [start_index, stop_index]}, see below
