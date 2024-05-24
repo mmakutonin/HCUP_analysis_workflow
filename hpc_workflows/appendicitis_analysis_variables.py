@@ -11,6 +11,9 @@ procedure_codes = { #currently appendectomy procedures, change for new procedure
 diagnosis_codes = [ #currently for acute appendicitis
     "K35"
 ]
+linker_table_diagnosis_codes = [ #currently for acute appendicitis
+    "K35"
+]
 
 init_visit_datasets = {
     "sedd": True,
@@ -65,11 +68,17 @@ code_category_dict = {
     "bowel obstruction": ["K56"]
 }
 
+# TODO the current approach makes it so that the linker_table charts are **necessarily** a subset of revisit-eligible charts.
+# If we need a different use case eventually, will need to be re-engineered.
 def dataset_filtering_function(dataset_name, dataset_core, proc_code_type):
     return dataset_core[dataset_core["ICD-10"].transform(
         lambda x: any([x.startswith(code) for code in diagnosis_codes])
     )].copy()
 
+def linker_table_filtering_function(dataset):
+    return dataset[pd.concat([
+        dataset["ICD-10"].astype('str').str.slice(2,9).str.contains(f"^{code}") for code in linker_table_diagnosis_codes
+    ], axis=1).any(axis=1)].copy()
 
 # Data Enrichment
 # Separates records/patients into subgroups for statistical analysis. Currently _________

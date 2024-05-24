@@ -16,10 +16,18 @@ def load_datasets_for_linkage(analysis_name:str):
         f.write(f"sid_ed rows: {sid_ed.shape[0]} \n")
     return sedd, sasd, sid, sid_ed
 
-def create_linker_table(sedd, sid_ed, sid, sasd, analysis_name:str, include_sedd = False, include_sid_ed = False, include_sid = False, include_sasd = False):
+def create_linker_table(
+        sedd, sid_ed, sid, sasd,
+        analysis_name:str,
+        linker_table_filtering_function:callable,
+        include_sedd:bool = False,
+        include_sid_ed:bool = False,
+        include_sid:bool = False,
+        include_sasd:bool = False
+    ):
     def create_linker_table(dataset, sid_flag):
         join_dataset = sid if sid_flag else dataset
-        dataset = dataset.reset_index().groupby("visit_link")[["record_id", "year"]].min().join(
+        dataset = linker_table_filtering_function(dataset).reset_index().groupby("visit_link")[["record_id", "year"]].min().join(
             join_dataset[["age", "female", "homeless", "race", "married", "median_zip_income", "payer", "discharge_quarter"]],
             on="record_id"
         ).rename(columns={
@@ -201,6 +209,7 @@ def calc_LOS(linker_table, sedd, sid, sasd):
 
 def create_linked_datasets(
         analysis_name: str,
+        linker_table_filtering_function:callable,
         data_enrichment_function: callable,
         code_category_dict: dict[str, list[str]],
         init_visit_datasets: dict[str, bool]
@@ -209,6 +218,7 @@ def create_linked_datasets(
     starting_run("process full datasets")
     linker_table = create_linker_table(
         sedd, sid_ed, sid, sasd, analysis_name,
+        linker_table_filtering_function,
         include_sedd = init_visit_datasets["sedd"],
         include_sid_ed = init_visit_datasets["sid_ed"],
         include_sid = init_visit_datasets["sid"],
