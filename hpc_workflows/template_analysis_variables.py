@@ -118,11 +118,11 @@ demographic_table_configurations = [
     # {
     #     "key": de_col_keys[0],
     #     "query_string": "`Cost (USD)` >= 0", #Universal filter
-    #     "save_filepath": f"../tables/table name.csv",
+    #     "save_name": f"table name",
     #     "has_outcome_crosscomparison": True,
     #     "outcome_crosscomparison": [
     #         {
-    #             "save_filepath": "../tables/table name.csv",
+    #             "save_name": "table name",
     #             "outcome_variable": "Cost (USD)",
     #             "groupby_row": de_col_values[de_col_keys[1]] #groupby_col is always the "key" attribute above
     #         }

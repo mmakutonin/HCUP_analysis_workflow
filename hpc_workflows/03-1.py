@@ -132,8 +132,9 @@ def create_outcome_crosscomparison_table(num_full_dataset, outcome_variable, gro
     return return_df.replace(np.nan, " ")
 
 def create_summary(
+        analysis_name:str,
         groupby_col:str,
-        save_filepath:str,
+        save_name:str,
         table_configuration_variables:dict,
         full_dataset:pd.DataFrame,
         dem_dataset:pd.DataFrame,
@@ -142,7 +143,7 @@ def create_summary(
         filter_criteria="`Cost (USD)` >= 0" #cost should always be positive, making this a universal filter
     ):
     if dem_dataset.query(filter_criteria).shape[0] == 0:
-        print_to_drop(f"Could not create `{save_filepath}` because filter criteria of `{filter_criteria}` returned empty dataset.")
+        print_to_drop(f"Could not create `{save_name}` because filter criteria of `{filter_criteria}` returned empty dataset.")
         return
     #Dependencies for both cross-comparison and summary tables
     num_full_dataset = dem_dataset.query(filter_criteria).join(comorbidities, how="left")\
@@ -190,7 +191,7 @@ def create_summary(
         summary_table.loc["Totals"] = [*col_totals, ' ']
     else:
         summary_table.loc["Totals"] = col_totals
-    summary_table.reindex(category_dict.keys()).to_csv(save_filepath)
+    summary_table.reindex(category_dict.keys()).to_csv(f"../results/{analysis_name}/tables/{save_name}.csv")
     #Create cross-comparison tables
     if table_configuration_variables["has_outcome_crosscomparison"]:
         for table in table_configuration_variables["outcome_crosscomparison"]:
@@ -198,7 +199,7 @@ def create_summary(
                 num_full_dataset,
                 table["outcome_variable"],
                 table["groupby_row"]
-            ).to_csv(table["save_filepath"])
+            ).to_csv(f"../results/{analysis_name}/tables/{table['save_name']}.csv")
 
 def create_summary_tables(
         analysis_name:str,
@@ -215,8 +216,9 @@ def create_summary_tables(
     )
     for table_configuration in demographic_table_configurations:
         create_summary(
+            analysis_name=analysis_name,
             groupby_col=table_configuration["key"],
-            save_filepath=table_configuration["save_filepath"],
+            save_filepath=table_configuration["save_name"],
             table_configuration_variables=table_configuration,
             full_dataset=full_dataset,
             dem_dataset=dem_dataset,

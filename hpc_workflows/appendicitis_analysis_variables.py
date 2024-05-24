@@ -236,25 +236,25 @@ demographic_table_configurations = [
     {
         "key": de_col_keys[1],
         "query_string": "(Complicated == False) and (`Pediatric (<18)` == False)",
-        "save_filepath": f"../tables/Table 1 Management Type Uncomplicated Adult.csv",
+        "save_name": f"Table 1 Management Type Uncomplicated Adult",
         "has_outcome_crosscomparison": False,
     },
     {
         "key": de_col_keys[5],
         "query_string": "(Complicated == False) and (`Pediatric (<18)` == False)",
-        "save_filepath": f"../tables/Table 1 Surgery vs None Uncomplicated Adult.csv",
+        "save_name": f"Table 1 Surgery vs None Uncomplicated Adult",
         "has_outcome_crosscomparison": False,
     },
     {
         "key": de_col_keys[6],
         "query_string": "(Complicated == False) and (`Pediatric (<18)` == False)",
-        "save_filepath": f"../tables/Table 1 IV Abx vs None Uncomplicated Adult.csv",
+        "save_name": f"Table 1 IV Abx vs None Uncomplicated Adult",
         "has_outcome_crosscomparison": False,
     },
     {
         "key": de_col_keys[6],
         "query_string": f"(Complicated == False) and (`Pediatric (<18)` == False) and (`{de_col_values[de_col_keys[5]][1]}` == True)",
-        "save_filepath": f"../tables/Table 1 IV Abx vs None in Medical Management Uncomplicated Adult.csv",
+        "save_name": f"Table 1 IV Abx vs None in Medical Management Uncomplicated Adult",
         "has_outcome_crosscomparison": False,
     },
     # {
@@ -272,7 +272,7 @@ demographic_table_configurations = [
     {
         "key": de_col_keys[7],
         "query_string": f"(Complicated == False) and (`Pediatric (<18)` == False)",
-        "save_filepath": f"../tables/Table 1 2016-18 vs 2019-21 Uncomplicated Adult.csv",
+        "save_name": f"Table 1 2016-18 vs 2019-21 Uncomplicated Adult",
         "has_outcome_crosscomparison": False,
     },
 ]
