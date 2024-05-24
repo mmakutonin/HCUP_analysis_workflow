@@ -1,0 +1,6 @@
+Given Uncomplicated Appendicitis - Surgical vs Non-Surgical Management 
+Management Type
+True     16995
+False     2869 
+Logreg Results: 
+Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'

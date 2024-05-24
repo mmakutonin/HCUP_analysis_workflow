@@ -1,0 +1,6 @@
+Given Complicated Appendicitis and Immediate Appendectomy- Opioid vs None 
+Opioid Administration
+False    2423
+True     1713 
+Logreg Results: 
+Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'

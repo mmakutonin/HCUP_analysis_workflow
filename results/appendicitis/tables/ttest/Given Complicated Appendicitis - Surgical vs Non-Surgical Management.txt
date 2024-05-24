@@ -1,0 +1,6 @@
+Given Complicated Appendicitis - Surgical vs Non-Surgical Management 
+Management Type
+True     4136
+False     898 
+Logreg Results: 
+Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'

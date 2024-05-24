@@ -1,0 +1,6 @@
+Given Uncomplicated Appendicitis and Initial Non-Surgical Management - Risks of Surgical Conversion 
+Management Type
+False    2122
+True      747 
+Logreg Results: 
+Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'
