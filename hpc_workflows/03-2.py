@@ -14,7 +14,7 @@ from utility_functions import load_file, starting_run, print_to_drop, evaluate_m
 demographic_cols = ['marital_status', 'initial_discharge_quarter', 'gender', 'race', 'payer', "Pediatric", "Geriatric"]
 numerical_demographic_cols = ['median_zip_income', 'CMDF CCI']
 pca = PCA(n_components=10)
-enc = OneHotEncoder(sparse=False)
+enc = OneHotEncoder(sparse_output=False)
 scaler = StandardScaler()
 mScaler = MinMaxScaler()
 
@@ -47,7 +47,7 @@ def run_logreg(dataset:pd.DataFrame, target:pd.Series, results_output_file):
     logit_model = Logit(target, dataset).fit_regularized(maxiter=1000, disp=False)
     summary = logit_model.summary2().tables[1].sort_values(['P>|z|', 'Coef.'])
     summary["OR"] = summary['Coef.'].transform(np.exp)
-    summary["OR CI"] = [norm.interval(alpha=0.95, loc=0, scale=item[1])[1] for item in summary['Std.Err.'].iteritems()]
+    summary["OR CI"] = [norm.interval(confidence=0.95, loc=0, scale=item[1])[1] for item in summary['Std.Err.'].items()]
     summary["OR Formatted"] = summary.apply(
         lambda row: f"{round(row['OR'], 2)} ({round(row['OR']-row['OR CI'], 2)}, {round(row['OR']+row['OR CI'], 2)})",
         axis=1
@@ -55,7 +55,7 @@ def run_logreg(dataset:pd.DataFrame, target:pd.Series, results_output_file):
     # Cleaning up summary output cols:
     summary["Odds Ratio of ____ (95% CI)"] = summary["OR Formatted"]
     summary["P-value"] = summary["P>|z|"]
-    output_summary = summary[["Odds Ratio of ____ (95% CI)", "P-value"]].round(5).applymap(
+    output_summary = summary[["Odds Ratio of ____ (95% CI)", "P-value"]].round(5).map(
         lambda cell: "< 0.00001" if cell == 0.0 else cell
     )
     # Model eval printing:
@@ -74,13 +74,13 @@ def run_PCA(dataset):
         scaler.fit_transform(fitted_model.transform(dataset)), index=dataset.index
     ), fitted_model.explained_variance_ratio_, pd.DataFrame(fitted_model.components_.T, index=dataset.columns)
 
-def ttest(target, outcome_cols):
+def ttest(target, outcome_cols, features):
     def ci(col, is_true, dataset):
         if col["type"] == "string":
             dataset[col["name"]] = dataset[col["name"]].map({col["positive_class"]: 1}).fillna(0)
         mean, sem = dataset.loc[dataset["target"] == is_true][col["name"]].agg(["mean", "sem"])
-        return f"{round(mean, 4)} ± {round(norm.interval(alpha=0.95,loc=0,scale=sem)[1], 4)}"
-    dataset = data.join(target.rename("target"), how="inner")
+        return f"{round(mean, 4)} ± {round(norm.interval(confidence=0.95,loc=0,scale=sem)[1], 4)}"
+    dataset = features.join(target.rename("target"), how="inner")
     stats = pd.DataFrame({
         'Metric': [col["name"] for col in outcome_cols],
         'Mean True': [ci(col, True, dataset) for col in outcome_cols],
@@ -130,10 +130,10 @@ def run_multivariate_analyses(
                 model_eval.to_csv(f"../results/{analysis_name}/tables/logreg/Model Eval {target_name} Feature Scores.csv")
                 if(include_pca):
                     f.write("PCA Results: \n")
-                    run_logreg(pca_dataset.loc[target_data.index], target_data, f)[0].to_csv(f"../tables/logreg/{target_name} PCA Component Scores.csv")
+                    run_logreg(pca_dataset.loc[target_data.index], target_data, f)[0].to_csv(f"../results/{analysis_name}/tables/logreg/{target_name} PCA Component Scores.csv")
                     component_eigenvalues.to_csv(f"../results/{analysis_name}/tables/logreg/PCA eigenvalues.csv")
                     pd.DataFrame(component_importance).to_csv(f"../results/{analysis_name}/tables/logreg/PCA explained variance.csv")
-                f.write(ttest(target_data, outcome_cols).to_string())
+                f.write(ttest(target_data, outcome_cols, data).to_string())
             except Exception as e:
                 f.write(f"Error: could not run Logreg Stats: {e}")
 
@@ -147,15 +147,15 @@ def run_multivariate_analyses(
             f.write("Linreg Results: \n")
             try:
                 results = OLS(target_data, scaled_data.loc[target_data.index]).fit_regularized()
-                summary = results.summary2().tables[1].sort_values(['P>|z|', 'Coef.'])
-                summary["Coef. CI"] = [norm.interval(alpha=0.95, loc=0, scale=item[1])[1] for item in summary['Std.Err.'].iteritems()]
+                summary = results.summary().tables[1].sort_values(['P>|z|', 'Coef.'])
+                summary["Coef. CI"] = [norm.interval(confidence=0.95, loc=0, scale=item[1])[1] for item in summary['Std.Err.'].items()]
                 summary["Odds Ratio of ____ (95% CI)"] = summary.apply(
                     lambda row: f"{round(row['Coef.'], 2)} ({round(row['Coef.']-row['Coef. CI'], 2)}, {round(row['Coef.']+row['Coef. CI'], 2)})",
                     axis=1
                 )
                 # Cleaning up summary output cols:
                 summary["P-value"] = summary["P>|z|"]
-                output_summary = summary[["Odds Ratio of ____ (95% CI)", "P-value"]].round(5).applymap(
+                output_summary = summary[["Odds Ratio of ____ (95% CI)", "P-value"]].round(5).map(
                     lambda cell: "< 0.00001" if cell == 0.0 else cell
                 )
                 output_summary.to_csv(f"../results/{analysis_name}/tables/linreg/{target_name} Feature Scores.csv")

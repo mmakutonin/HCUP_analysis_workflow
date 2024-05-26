@@ -1,11 +1,11 @@
 Predictors of Antibiotic Management Cost 
 count     19931.000000
-mean       5295.107335
-std        7106.366377
+mean       5963.841540
+std        8245.170185
 min           0.000000
-25%        1789.180120
-50%        3078.685792
-75%        6490.579420
+25%        2859.088232
+50%        3108.205464
+75%        7010.231678
 max      415768.470250 
 Linreg Results: 
-Error: could not run LinReg Stats: 'RegularizedResults' object has no attribute 'summary2'
+Error: could not run LinReg Stats: 

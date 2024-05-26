@@ -1,6 +1,21 @@
 Given Uncomplicated Appendicitis and Initial Non-Surgical Management - Risks of Surgical Conversion 
 Management Type
-False    2122
-True      747 
+False    2023
+True      849 
 Logreg Results: 
-Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'
+Area under the curve (AUC): 0.65 
+Model Accuracy: 0.63 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 42 
+PCA Results: 
+Area under the curve (AUC): 0.57 
+Model Accuracy: 0.6 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                      Metric             Mean True            Mean False        P value
+0                       Cost  9716.1353 ± 637.9514  3870.1144 ± 526.7057   1.981089e-41
+1     Inpatient Readmissions        0.6137 ± 0.039       0.0568 ± 0.0116  1.815063e-119
+2            ED Readmissions       0.8068 ± 0.0579       0.2951 ± 0.0334   4.229676e-47
+3                       Died             0.0 ± nan             0.0 ± nan            NaN
+4                        LOS        3.2273 ± 0.252         2.0845 ± 0.17   5.436154e-13
+5  Readmit with Complication             0.0 ± nan             0.0 ± nan            NaN

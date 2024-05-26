@@ -1,6 +1,21 @@
 Given Uncomplicated Appendicitis - Immediate Appendectomy vs Fully Non-Surgical Management 
 Management Type
-True     16995
-False     2122 
+True     16992
+False     2023 
 Logreg Results: 
-Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'
+Area under the curve (AUC): 0.69 
+Model Accuracy: 0.66 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 42 
+PCA Results: 
+Area under the curve (AUC): 0.68 
+Model Accuracy: 0.62 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                      Metric            Mean True            Mean False       P value
+0                       Cost  4651.8655 ± 80.4837  3870.1144 ± 526.7057  8.144423e-03
+1     Inpatient Readmissions      0.0189 ± 0.0023       0.0568 ± 0.0116  9.066798e-10
+2            ED Readmissions      0.2156 ± 0.0104       0.2951 ± 0.0334  1.755049e-05
+3                       Died            0.0 ± nan             0.0 ± nan           NaN
+4                        LOS      2.1462 ± 0.0385         2.0845 ± 0.17  9.762844e-01
+5  Readmit with Complication            0.0 ± nan             0.0 ± nan           NaN

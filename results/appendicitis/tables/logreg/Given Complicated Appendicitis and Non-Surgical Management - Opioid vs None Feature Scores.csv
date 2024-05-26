@@ -1,0 +1,43 @@
+,Odds Ratio of ____ (95% CI),P-value
+Antibiotic Treatment,"3.89 (3.64, 4.14)",< 0.00001
+median_zip_income,"1.22 (1.01, 1.43)",0.0651
+Mood Disorders,"0.85 (0.64, 1.07)",0.1507
+CMDF CCI,"0.89 (0.69, 1.1)",0.27846
+Hypertension,"0.93 (0.68, 1.18)",0.5685
+bowel obstruction,"1.04 (0.9, 1.17)",0.59216
+Hyperlipidemia,"1.05 (0.81, 1.29)",0.68073
+Diabetes Mellitus,"0.97 (0.76, 1.17)",0.74179
+appendecolith,"0.98 (0.81, 1.14)",0.77103
+Alcohol-Related Disorders,"0.98 (0.84, 1.13)",0.81293
+Nicotine Dependence,"0.98 (0.76, 1.21)",0.8804
+Ischemic Heart Disease,"1.0 (0.8, 1.19)",0.96
+Aspirin,"1.0 (0.82, 1.18)",0.98742
+Obesity,"1.0 (0.78, 1.22)",0.99293
+pregnant,"126791249928529.92 (126791248161369.56, 126791251695690.28)",0.99997
+payer_No charge,"0.12 (-989897.68, 989897.92)",1.0
+race_Asian,"0.81 (-2753558.81, 2753560.44)",1.0
+race_Hispanic,"1.13 (-5341313.47, 5341315.74)",1.0
+race_White,"1.17 (-7140219.0, 7140221.34)",1.0
+race_African-American,"1.08 (-5546016.76, 5546018.91)",1.0
+race_Native American,"1.01 (-1134797.31, 1134799.33)",1.0
+Pediatric_True,"1.05 (-8288283.52, 8288285.63)",1.0
+Pediatric_False,"0.95 (-8499101.42, 8499103.32)",1.0
+race_Other,"1.02 (-2739492.01, 2739494.04)",1.0
+Geriatric_True,"0.98 (-12220869.31, 12220871.28)",1.0
+Geriatric_False,"1.02 (-12220869.28, 12220871.31)",1.0
+gender_Female,"1.02 (-16429223.82, 16429225.85)",1.0
+gender_Male,"0.98 (-16429389.33, 16429391.29)",1.0
+marital_status_Widowed,"0.13 (nan, nan)",
+payer_Private insurance,"0.78 (nan, nan)",
+payer_Medicare,"0.85 (nan, nan)",
+payer_Medicaid,"0.87 (nan, nan)",
+initial_discharge_quarter_1.0,"0.93 (nan, nan)",
+initial_discharge_quarter_4.0,"0.95 (nan, nan)",
+payer_Other,"0.96 (nan, nan)",
+initial_discharge_quarter_3.0,"0.96 (nan, nan)",
+initial_discharge_quarter_2.0,"1.02 (nan, nan)",
+payer_Self-pay,"1.12 (nan, nan)",
+marital_status_Legally Separated,"1.21 (nan, nan)",
+marital_status_Divorced,"1.25 (nan, nan)",
+marital_status_Married,"1.47 (nan, nan)",
+marital_status_Single,"1.65 (nan, nan)",

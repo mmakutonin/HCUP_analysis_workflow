@@ -1,6 +1,21 @@
 Given Complicated Appendicitis and Immediate Appendectomy- Opioid vs None 
 Opioid Administration
-False    2423
-True     1713 
+False    2422
+True     1712 
 Logreg Results: 
-Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'
+Area under the curve (AUC): 0.96 
+Model Accuracy: 0.92 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 42 
+PCA Results: 
+Area under the curve (AUC): 0.95 
+Model Accuracy: 0.92 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                      Metric             Mean True            Mean False        P value
+0                       Cost  3345.8117 ± 169.2741  13748.0577 ± 443.926  1.343562e-315
+1     Inpatient Readmissions       0.0339 ± 0.0097       0.0735 ± 0.0119   8.659688e-07
+2            ED Readmissions       0.2144 ± 0.0304       0.2556 ± 0.0239   7.400299e-02
+3                       Died             0.0 ± nan             0.0 ± nan            NaN
+4                        LOS       2.3686 ± 0.1067       4.4789 ± 0.1916   1.735183e-75
+5  Readmit with Complication             0.0 ± nan             0.0 ± nan            NaN

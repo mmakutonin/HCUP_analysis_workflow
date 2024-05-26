@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from data_reading_functions import read_data, hospital_reference
+from data_reading_functions import read_data, hospital_reference, data_dir
 from utility_functions import load_file, pickle_file
 
 sid_inflation_adjustment = pd.DataFrame([
@@ -43,7 +43,7 @@ def enrich_sid_costs(analysis_name:str):
     ccr_list = []
     # uses APICC for hospitals for which it is available, and GAPICC for those which APICC is not available.
     for ccr_name in ['cc2016CD', 'cc2017CD_v2', 'cc2018CDSID_v2', 'cc2019CDSID', 'cc2020CDSID']:
-        ccr = pd.read_csv(f'../../raw_data/{ccr_name}.csv', index_col="'HOSPID'")
+        ccr = pd.read_csv(f'{data_dir}{ccr_name}.csv', index_col="'HOSPID'")
         ratios = ccr["'APICC'"].str.strip().replace(".", np.nan)\
         .combine_first(ccr["'GAPICC'"]).astype('float').to_frame()
         ratios['year'] = ccr.iat[0,0]

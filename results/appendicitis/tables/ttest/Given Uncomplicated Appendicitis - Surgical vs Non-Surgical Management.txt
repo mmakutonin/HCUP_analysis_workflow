@@ -1,6 +1,21 @@
 Given Uncomplicated Appendicitis - Surgical vs Non-Surgical Management 
 Management Type
-True     16995
-False     2869 
+True     16992
+False     2872 
 Logreg Results: 
-Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'
+Area under the curve (AUC): 0.68 
+Model Accuracy: 0.66 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 42 
+PCA Results: 
+Area under the curve (AUC): 0.67 
+Model Accuracy: 0.64 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                      Metric            Mean True            Mean False        P value
+0                       Cost  4651.8655 ± 80.4837  5598.2731 ± 427.4126   4.119582e-05
+1     Inpatient Readmissions      0.0189 ± 0.0023       0.2214 ± 0.0169  1.411813e-109
+2            ED Readmissions      0.2156 ± 0.0104       0.4464 ± 0.0303   9.195534e-44
+3                       Died            0.0 ± nan             0.0 ± nan            NaN
+4                        LOS      2.1462 ± 0.0385       2.4224 ± 0.1423   4.883662e-04
+5  Readmit with Complication            0.0 ± nan             0.0 ± nan            NaN

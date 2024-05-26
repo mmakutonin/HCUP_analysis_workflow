@@ -1,0 +1,43 @@
+,Odds Ratio of ____ (95% CI),P-value
+Antibiotic Treatment,"0.69 (0.63, 0.75)",< 0.00001
+bowel obstruction,"1.16 (1.12, 1.2)",< 0.00001
+appendecolith,"1.09 (1.04, 1.14)",0.00047
+Obesity,"1.07 (1.02, 1.13)",0.01416
+Hypertension,"1.08 (1.01, 1.15)",0.02555
+Alcohol-Related Disorders,"0.96 (0.92, 1.01)",0.14586
+Mood Disorders,"0.96 (0.9, 1.02)",0.19275
+Aspirin,"0.98 (0.93, 1.03)",0.39158
+Hyperlipidemia,"0.98 (0.91, 1.04)",0.43023
+pregnant,"1.02 (0.96, 1.09)",0.47192
+Ischemic Heart Disease,"0.99 (0.94, 1.04)",0.59768
+median_zip_income,"0.98 (0.92, 1.04)",0.60391
+Diabetes Mellitus,"0.99 (0.93, 1.04)",0.65001
+Nicotine Dependence,"0.99 (0.93, 1.05)",0.81193
+CMDF CCI,"0.99 (0.93, 1.06)",0.82001
+race_Native American,"0.94 (-1170346.39, 1170348.28)",1.0
+race_African-American,"0.88 (-6630632.39, 6630634.14)",1.0
+initial_discharge_quarter_4.0,"1.06 (-4313734.08, 4313736.19)",1.0
+race_White,"1.1 (-7846270.95, 7846273.15)",1.0
+initial_discharge_quarter_3.0,"0.95 (-4720273.63, 4720275.53)",1.0
+payer_Self-pay,"0.97 (-4634998.96, 4635000.91)",1.0
+race_Hispanic,"1.04 (-7537808.38, 7537810.46)",1.0
+initial_discharge_quarter_1.0,"0.99 (-3336635.93, 3336637.91)",1.0
+race_Other,"0.99 (-3227510.27, 3227512.25)",1.0
+payer_Other,"1.01 (-3600560.58, 3600562.59)",1.0
+race_Asian,"0.99 (-2975147.76, 2975149.75)",1.0
+initial_discharge_quarter_2.0,"1.01 (-3394136.15, 3394138.16)",1.0
+payer_No charge,"1.0 (-1333644.6, 1333646.59)",1.0
+payer_Medicaid,"0.99 (-7632997.43, 7632999.41)",1.0
+payer_Medicare,"1.01 (-5202772.64, 5202774.65)",1.0
+payer_Private insurance,"1.01 (-10411088.36, 10411090.37)",1.0
+marital_status_Legally Separated,"0.94 (nan, nan)",
+marital_status_Single,"0.94 (nan, nan)",
+gender_Female,"0.96 (nan, nan)",
+Pediatric_True,"0.96 (nan, nan)",
+Geriatric_True,"0.99 (nan, nan)",
+marital_status_Divorced,"1.0 (nan, nan)",
+Geriatric_False,"1.01 (nan, nan)",
+marital_status_Widowed,"1.02 (nan, nan)",
+Pediatric_False,"1.04 (nan, nan)",
+gender_Male,"1.04 (nan, nan)",
+marital_status_Married,"1.08 (nan, nan)",

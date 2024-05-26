@@ -1,5 +1,6 @@
 import pandas as pd
 from utility_functions import load_file, pickle_file, print_to_drop
+from data_reading_functions import data_dir
 
 def enrich_care_costs_by_quarter(analysis_name:str):
     codes = load_file("fully_filtered_codes.pickle", analysis_name)
@@ -9,7 +10,7 @@ def enrich_care_costs_by_quarter(analysis_name:str):
     sid_ed = load_file("filtered_sid_ed_data.pickle", analysis_name)
     sasd = load_file("filtered_sasd_data.pickle", analysis_name)
     rvu_lookup = pd.read_csv(
-        "../../raw_data/PPRRVU18_OCT.csv", skiprows=9, index_col=0
+        f"{data_dir}PPRRVU18_OCT.csv", skiprows=9, index_col=0
     )
     conv_factor=rvu_lookup.at["47563", "FACTOR"]
     rvu_lookup = rvu_lookup[["DESCRIPTION", "TOTAL.1"]].dropna()

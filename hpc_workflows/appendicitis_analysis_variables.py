@@ -9,7 +9,15 @@ procedure_codes = { #currently appendectomy procedures, change for new procedure
     "ICD-10-procedures": ["0DTJ"]
 }
 diagnosis_codes = [ #currently for acute appendicitis
-    "K35"
+    "R10", "R111[01]", "R112", "R14[01]",
+    "K3[5678]", "K65[01]",
+    "K565[012]", "K5660[019]", "K569",
+    "K750",
+    "A047",
+    "A4[01]",
+    "N13",
+    "G89[12]8",
+    "T81"
 ]
 linker_table_diagnosis_codes = [ #currently for acute appendicitis
     "K35"
@@ -71,9 +79,9 @@ code_category_dict = {
 # TODO the current approach makes it so that the linker_table charts are **necessarily** a subset of revisit-eligible charts.
 # If we need a different use case eventually, will need to be re-engineered.
 def dataset_filtering_function(dataset_name, dataset_core, proc_code_type):
-    return dataset_core[dataset_core["ICD-10"].transform(
-        lambda x: any([x.startswith(code) for code in diagnosis_codes])
-    )].copy()
+    icd_code_matches = [dataset_core["ICD-10"].str.contains(f"^{code}") for code in diagnosis_codes]
+    chief_complaint_matches = [dataset_core["chief_complaint"].str.contains(f"^{code}") for code in diagnosis_codes] if "sid" not in dataset_name else []
+    return dataset_core[pd.concat([*icd_code_matches, *chief_complaint_matches], axis=1).any(axis=1)].copy()
 
 def linker_table_filtering_function(dataset):
     return dataset[pd.concat([

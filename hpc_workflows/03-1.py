@@ -218,7 +218,7 @@ def create_summary_tables(
         create_summary(
             analysis_name=analysis_name,
             groupby_col=table_configuration["key"],
-            save_filepath=table_configuration["save_name"],
+            save_name=table_configuration["save_name"],
             table_configuration_variables=table_configuration,
             full_dataset=full_dataset,
             dem_dataset=dem_dataset,

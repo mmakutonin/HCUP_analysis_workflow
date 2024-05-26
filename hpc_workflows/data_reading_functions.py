@@ -44,7 +44,7 @@ core_reference = {
             "discharge_quarter": "float",
             "rural_urban":       "float",
             "disposition_code":  "int",
-            "chief_complaint":   "float"
+            "chief_complaint":   "string"
 
         },
         "2021": {
@@ -193,7 +193,7 @@ core_reference = {
             "total_charges":   "float",
             "discharge_quarter": "float",
             "disposition_code":  "int",
-            "chief_complaint": "float",
+            "chief_complaint": "string",
         },
         "2021": {
             "cpt_codes":         [18,242],

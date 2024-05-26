@@ -1,6 +1,21 @@
 Given Uncomplicated Appendicitis and Non-Surgical Management - Opioid vs None 
 Opioid Administration
-False    1742
-True     1127 
+False    1743
+True     1129 
 Logreg Results: 
-Error: could not run Logreg Stats: 'Series' object has no attribute 'iteritems'
+Area under the curve (AUC): 0.74 
+Model Accuracy: 0.68 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 42 
+PCA Results: 
+Area under the curve (AUC): 0.73 
+Model Accuracy: 0.68 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                      Metric             Mean True            Mean False       P value
+0                       Cost  4090.3319 ± 471.0893  6575.0175 ± 630.6059  1.403441e-09
+1     Inpatient Readmissions       0.2064 ± 0.0266       0.2312 ± 0.0219  3.164805e-01
+2            ED Readmissions       0.4597 ± 0.0545       0.4378 ± 0.0353  1.015660e+00
+3                       Died             0.0 ± nan             0.0 ± nan           NaN
+4                        LOS       2.0788 ± 0.1828       2.6449 ± 0.2017  9.433090e-05
+5  Readmit with Complication             0.0 ± nan             0.0 ± nan           NaN
