@@ -1,21 +1,21 @@
 Given Complicated Appendicitis and Non-Surgical Management - Opioid vs None 
 Opioid Administration
-False    691
-True     209 
+False    724
+True     241 
 Logreg Results: 
 Area under the curve (AUC): 0.84 
-Model Accuracy: 0.79 
+Model Accuracy: 0.78 
 Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
 Numer of Groups: 42 
 PCA Results: 
-Area under the curve (AUC): 0.8 
-Model Accuracy: 0.74 
+Area under the curve (AUC): 0.81 
+Model Accuracy: 0.75 
 Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
 Numer of Groups: 10 
                       Metric              Mean True             Mean False       P value
-0                       Cost  7888.7175 ± 2106.1221  13641.7326 ± 967.9216  3.703193e-06
-1     Inpatient Readmissions        0.3828 ± 0.0869        0.2706 ± 0.0406  4.508084e-02
-2            ED Readmissions        0.6794 ± 0.1479        0.4399 ± 0.0583  6.848253e-03
+0                       Cost  7208.8908 ± 1846.8378  13521.8191 ± 945.2146  1.142244e-08
+1     Inpatient Readmissions        0.3444 ± 0.0775        0.2666 ± 0.0392  1.597314e-01
+2            ED Readmissions        0.6846 ± 0.1563        0.4296 ± 0.0563  5.680992e-03
 3                       Died              0.0 ± nan              0.0 ± nan           NaN
-4                        LOS        3.1962 ± 0.6198        5.6802 ± 0.4197  4.480181e-10
+4                        LOS        3.1162 ± 0.5495        5.6229 ± 0.4058  4.446165e-12
 5  Readmit with Complication              0.0 ± nan              0.0 ± nan           NaN

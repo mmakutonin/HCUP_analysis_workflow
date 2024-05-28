@@ -117,7 +117,7 @@ de_col_values = {
 }
 def data_enrichment_function(sedd, sasd, sid, sid_ed, codes, linker_table):
     code_types = {
-        de_col_keys[0]: ["K352", "K3520", "K3521", "K3531", "K3532", "K3533", "K35891"],
+        de_col_keys[0]: ["K352", "K3520", "K3521", "K3531", "K3532", "K3533", "K35891", "K381"],
         de_col_keys[1]: [*procedure_codes["cpt_codes"], *procedure_codes["ICD-10-procedures"]],
         de_col_keys[2]: ["J2270", "J2274"],
         de_col_keys[3]: ["J0595", "J1170", "J1810", "J1960", "J2175", "J2270", "J2274", "J3010", "J3070"],
