@@ -1,0 +1,14 @@
+Predictors of Benzodiazepine Co-Poisoning 
+False    8696
+True      291 
+Logreg Results: 
+Area under the curve (AUC): 0.74 
+Model Accuracy: 0.63 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 41 
+PCA Results: 
+Area under the curve (AUC): 0.73 
+Model Accuracy: 0.64 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+Error: could not run statistics

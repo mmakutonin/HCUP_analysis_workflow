@@ -1,0 +1,39 @@
+,Odds Ratio of ____ (95% CI),P-value
+Suicidal ideation,"1.58 (1.51, 1.65)",< 0.00001
+Nicotine Dependence,"0.8 (0.76, 0.85)",< 0.00001
+median_zip_income,"1.16 (1.12, 1.21)",< 0.00001
+Obesity,"0.91 (0.87, 0.95)",< 0.00001
+Ischemic Heart Disease,"0.94 (0.9, 0.98)",0.00136
+payer_Medicare,"0.89 (0.82, 0.96)",0.00171
+Diabetes Mellitus,"0.93 (0.89, 0.98)",0.00261
+Pediatric,"1.07 (1.01, 1.12)",0.02074
+Mood Disorders,"1.07 (1.01, 1.13)",0.0311
+payer_No charge,"0.95 (0.89, 1.0)",0.04955
+Geriatric,"1.05 (1.0, 1.1)",0.05761
+Hypertension,"1.04 (0.99, 1.09)",0.10413
+Depression,"1.04 (0.99, 1.1)",0.14704
+Alcohol-Related Disorders,"1.03 (0.99, 1.07)",0.15606
+Aspirin,"0.98 (0.94, 1.02)",0.28998
+CMDF CCI,"1.02 (0.97, 1.06)",0.39487
+Hyperlipidemia,"0.98 (0.94, 1.03)",0.40684
+marital_status_Divorced,"1.06 (-7397789.11, 7397791.23)",1.0
+marital_status_Married,"0.97 (-7239366.62, 7239368.55)",1.0
+marital_status_Legally Separated,"0.99 (-2949826.64, 2949828.61)",1.0
+marital_status_Single,"0.95 (-11777016.31, 11777018.22)",1.0
+marital_status_Widowed,"0.99 (-4218254.43, 4218256.41)",1.0
+gender_Male,"0.99 (-144657134.33, 144657136.31)",1.0
+gender_Female,"1.01 (-150406029.75, 150406031.77)",1.0
+race_White,"0.58 (nan, nan)",
+race_African-American,"0.69 (nan, nan)",
+payer_Medicaid,"0.82 (nan, nan)",
+initial_discharge_quarter_2.0,"0.96 (nan, nan)",
+initial_discharge_quarter_1.0,"0.96 (nan, nan)",
+race_Other,"0.98 (nan, nan)",
+payer_Other,"1.03 (nan, nan)",
+initial_discharge_quarter_4.0,"1.03 (nan, nan)",
+race_Asian,"1.04 (nan, nan)",
+initial_discharge_quarter_3.0,"1.05 (nan, nan)",
+race_Native American,"1.06 (nan, nan)",
+payer_Self-pay,"1.15 (nan, nan)",
+payer_Private insurance,"1.31 (nan, nan)",
+race_Hispanic,"5.35 (nan, nan)",

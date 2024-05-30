@@ -1,0 +1,20 @@
+Complicated Colic - Given Admission - Immediate Cholecystectomy vs Others 
+True     5865
+False    1600 
+Logreg Results: 
+Area under the curve (AUC): 0.7 
+Model Accuracy: 0.62 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 35 
+PCA Results: 
+Area under the curve (AUC): 0.68 
+Model Accuracy: 0.62 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                           Metric             Mean True             Mean False       P value
+0                            Cost  9128.6595 ± 218.8486  10716.3984 ± 487.6336  1.325408e-08
+1          Inpatient Readmissions       0.0135 ± 0.0032        0.1644 ± 0.0207  1.662533e-42
+2                 ED Readmissions       0.0225 ± 0.0042        0.1062 ± 0.0169  2.288209e-20
+3                            Died       0.0099 ± 0.0025        0.0381 ± 0.0094  2.909264e-08
+4                             LOS       3.6598 ± 0.0855        4.7737 ± 0.2214  1.705096e-19
+5  Post-Index Visit Cholecystitis       0.0104 ± 0.0026              0.0 ± nan           NaN

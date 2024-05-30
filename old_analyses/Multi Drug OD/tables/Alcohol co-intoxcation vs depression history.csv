@@ -1,0 +1,4 @@
+,"Concurrent Alcohol Use (%, 95% CI, N)","Isolated Drug Use (%, 95% CI, N)",P-value (Welch's T-test)
+Depression,"4639.7 (3447.6 - 3447.6), 151.0","6026.1 (5517.0 - 5517.0), 1548.0",0.03595
+Not Depression,"2619.1 (1993.9 - 1993.9), 552.0","2375.8 (2203.2 - 2203.2), 10102.0",0.46156
+P-value (Welch's T-test),0.00336,< 0.00001, 

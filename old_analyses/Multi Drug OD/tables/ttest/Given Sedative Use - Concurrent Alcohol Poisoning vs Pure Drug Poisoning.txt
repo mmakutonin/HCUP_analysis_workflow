@@ -1,0 +1,20 @@
+Given Sedative Use - Concurrent Alcohol Poisoning vs Pure Drug Poisoning 
+True     13920
+False     3530 
+Logreg Results: 
+Area under the curve (AUC): 0.78 
+Model Accuracy: 0.68 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 38 
+PCA Results: 
+Area under the curve (AUC): 0.74 
+Model Accuracy: 0.64 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                        Metric          Mean True            Mean False       P value
+0                         Cost  926.2147 ± 71.632  4677.6158 ± 423.1558  4.285132e-63
+1       Inpatient Readmissions    0.0267 ± 0.0032       0.0524 ± 0.0084  4.614136e-08
+2              ED Readmissions    0.3823 ± 0.0226       0.2722 ± 0.0229  4.179965e-11
+3                         Died          0.0 ± nan             0.0 ± nan           NaN
+4                          LOS    0.7041 ± 0.0287       1.9079 ± 0.1554  1.051146e-48
+5  Ventilator on Initial Visit     0.002 ± 0.0007             0.0 ± nan           NaN

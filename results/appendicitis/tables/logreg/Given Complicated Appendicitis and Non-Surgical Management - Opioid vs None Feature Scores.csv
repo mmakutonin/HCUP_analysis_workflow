@@ -1,0 +1,41 @@
+,Odds Ratio of ____ (95% CI),P-value
+CMDF CCI,"1.51 (1.33, 1.68)",< 0.00001
+bowel obstruction,"0.82 (0.68, 0.97)",0.01028
+Hypertension,"0.83 (0.61, 1.05)",0.09547
+Aspirin,"0.89 (0.7, 1.07)",0.20542
+Diabetes Mellitus,"0.89 (0.72, 1.07)",0.2063
+median_zip_income,"1.11 (0.93, 1.28)",0.24539
+Nicotine Dependence,"0.9 (0.71, 1.09)",0.27617
+Hyperlipidemia,"1.08 (0.88, 1.28)",0.46448
+Ischemic Heart Disease,"0.94 (0.77, 1.12)",0.52106
+Obesity,"0.94 (0.74, 1.15)",0.557
+Mood Disorders,"0.96 (0.78, 1.15)",0.69755
+pregnant,"1.2463360625077056e+18 (1.2463360625077046e+18, 1.2463360625077066e+18)",0.941
+Alcohol-Related Disorders,"0.26 (-372.65, 373.17)",0.99433
+marital_status_Widowed,"0.84 (-3058038.69, 3058040.37)",1.0
+payer_Self-pay,"1.14 (-4081691.62, 4081693.9)",1.0
+payer_Medicare,"0.9 (-4395325.93, 4395327.74)",1.0
+race_White,"2.1 (-39848611.49, 39848615.68)",1.0
+race_Hispanic,"1.73 (-31006321.27, 31006324.72)",1.0
+race_Native American,"1.1 (-5176690.36, 5176692.55)",1.0
+initial_discharge_quarter_3.0,"1.17 (-9245366.42, 9245368.75)",1.0
+initial_discharge_quarter_4.0,"1.15 (-9272211.68, 9272213.98)",1.0
+payer_Other,"1.05 (-3140972.62, 3140974.71)",1.0
+race_Other,"1.25 (-15587105.1, 15587107.59)",1.0
+race_African-American,"1.58 (-32336466.57, 32336469.73)",1.0
+marital_status_Legally Separated,"1.03 (-2228278.32, 2228280.38)",1.0
+payer_Private insurance,"0.92 (-8051327.48, 8051329.31)",1.0
+initial_discharge_quarter_2.0,"1.09 (-8131707.3, 8131709.47)",1.0
+marital_status_Married,"1.1 (-12206589.86, 12206592.05)",1.0
+marital_status_Single,"1.09 (-11883309.04, 11883311.22)",1.0
+payer_Medicaid,"0.97 (-6515294.42, 6515296.35)",1.0
+initial_discharge_quarter_1.0,"1.04 (-8284199.29, 8284201.37)",1.0
+payer_No charge,"1.01 (-1137394.56, 1137396.57)",1.0
+marital_status_Divorced,"0.99 (-4412744.96, 4412746.93)",1.0
+race_Asian,"1.03 (-13860687.22, 13860689.28)",1.0
+gender_Female,"1.01 (-11602575.5, 11602577.53)",1.0
+gender_Male,"0.99 (-11604747.77, 11604749.75)",1.0
+Pediatric_False,"0.86 (nan, nan)",
+Geriatric_True,"0.92 (nan, nan)",
+Geriatric_False,"1.08 (nan, nan)",
+Pediatric_True,"1.16 (nan, nan)",

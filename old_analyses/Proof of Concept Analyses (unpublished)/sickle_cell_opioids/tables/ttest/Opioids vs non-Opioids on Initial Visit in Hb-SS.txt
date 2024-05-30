@@ -1,0 +1,11 @@
+Opioids vs non-Opioids on Initial Visit in Hb-SS
+False    614
+True     461
+Logreg Results:Logistic Regression Accuracy: 0.63
+PCA Results:Logistic Regression Accuracy: 0.59
+                   Metric              Mean True              Mean False   P value
+0                    Cost  7960.1773 ± 2277.9432  11927.6887 ± 2106.0188  0.024690
+1  Inpatient Readmissions         0.731 ± 0.1732         0.7883 ± 0.1783  1.303575
+2         ED Readmissions        1.7223 ± 0.3403         1.5326 ± 0.3007  0.825898
+3                    Died        0.0087 ± 0.0085           0.013 ± 0.009  0.979444
+4                     LOS         6.026 ± 1.7033         7.9772 ± 1.7586  0.237166

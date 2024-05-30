@@ -1,0 +1,21 @@
+Given Complicated Appendicitis and Immediate Appendectomy- Opioid vs None 
+Opioid Administration
+False    2666
+True     2027 
+Logreg Results: 
+Area under the curve (AUC): 0.77 
+Model Accuracy: 0.69 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 40 
+PCA Results: 
+Area under the curve (AUC): 0.63 
+Model Accuracy: 0.58 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                      Metric             Mean True             Mean False       P value
+0                       Cost  3337.1199 ± 146.9604  13235.6525 ± 411.8468  0.000000e+00
+1     Inpatient Readmissions       0.0321 ± 0.0086        0.0701 ± 0.0111  2.044489e-07
+2            ED Readmissions       0.2181 ± 0.0277        0.2539 ± 0.0229  1.003512e-01
+3                       Died             0.0 ± nan              0.0 ± nan           NaN
+4                        LOS       2.3315 ± 0.0947        4.2783 ± 0.1796  2.957232e-75
+5  Readmit with Complication             0.0 ± nan              0.0 ± nan           NaN

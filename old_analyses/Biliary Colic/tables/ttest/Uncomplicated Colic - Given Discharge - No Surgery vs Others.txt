@@ -1,0 +1,20 @@
+Uncomplicated Colic - Given Discharge - No Surgery vs Others 
+True     3523
+False    2625 
+Logreg Results: 
+Area under the curve (AUC): 0.74 
+Model Accuracy: 0.69 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 35 
+PCA Results: 
+Area under the curve (AUC): 0.71 
+Model Accuracy: 0.66 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                           Metric          Mean True            Mean False        P value
+0                            Cost  794.729 ± 54.7214  3236.0222 ± 189.7582  1.730531e-118
+1          Inpatient Readmissions    0.0199 ± 0.0055       0.1638 ± 0.0154   1.192874e-63
+2                 ED Readmissions    0.1016 ± 0.0129       0.3284 ± 0.0226   6.577854e-63
+3                            Died    0.0094 ± 0.0032       0.0015 ± 0.0015   2.483516e-05
+4                             LOS    0.3849 ± 0.0309        1.123 ± 0.0704   4.240030e-75
+5  Post-Index Visit Cholecystitis    0.0216 ± 0.0048             0.0 ± nan            NaN

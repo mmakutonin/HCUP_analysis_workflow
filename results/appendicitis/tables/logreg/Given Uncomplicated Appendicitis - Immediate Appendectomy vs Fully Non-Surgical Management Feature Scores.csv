@@ -1,0 +1,41 @@
+,Odds Ratio of ____ (95% CI),P-value
+bowel obstruction,"0.72 (0.67, 0.77)",< 0.00001
+CMDF CCI,"1.13 (1.1, 1.16)",< 0.00001
+Diabetes Mellitus,"0.92 (0.88, 0.96)",< 0.00001
+Ischemic Heart Disease,"0.95 (0.91, 0.99)",0.00675
+Hypertension,"0.96 (0.93, 1.0)",0.0649
+Alcohol-Related Disorders,"0.97 (0.94, 1.01)",0.10177
+median_zip_income,"1.02 (0.99, 1.06)",0.12431
+Aspirin,"0.98 (0.94, 1.02)",0.28024
+pregnant,"1.01 (0.98, 1.03)",0.62985
+Hyperlipidemia,"0.99 (0.96, 1.03)",0.74856
+Obesity,"1.0 (0.97, 1.04)",0.76185
+Nicotine Dependence,"1.0 (0.97, 1.03)",0.85452
+Mood Disorders,"1.0 (0.97, 1.03)",0.86041
+payer_No charge,"1.02 (-58341.61, 58343.64)",1.0
+payer_Medicare,"0.96 (-341912.3, 341914.22)",1.0
+payer_Private insurance,"1.05 (-572931.55, 572933.64)",1.0
+Pediatric_True,"0.86 (-2093603.5, 2093605.21)",1.0
+Pediatric_False,"1.17 (-2127809.0, 2127811.33)",1.0
+payer_Self-pay,"0.98 (-283158.18, 283160.14)",1.0
+payer_Medicaid,"0.98 (-403433.82, 403435.78)",1.0
+payer_Other,"1.01 (-212267.22, 212269.24)",1.0
+initial_discharge_quarter_4.0,"0.95 (-1367541.04, 1367542.94)",1.0
+Geriatric_True,"0.94 (-2218661.04, 2218662.92)",1.0
+Geriatric_False,"1.07 (-2218660.91, 2218663.05)",1.0
+initial_discharge_quarter_3.0,"1.03 (-1470742.61, 1470744.66)",1.0
+initial_discharge_quarter_1.0,"1.02 (-1287742.8, 1287744.85)",1.0
+initial_discharge_quarter_2.0,"1.0 (-1332981.31, 1332983.31)",1.0
+race_Hispanic,"0.95 (nan, nan)",
+race_African-American,"0.97 (nan, nan)",
+marital_status_Married,"0.99 (nan, nan)",
+race_Other,"0.99 (nan, nan)",
+marital_status_Widowed,"0.99 (nan, nan)",
+marital_status_Divorced,"0.99 (nan, nan)",
+gender_Male,"1.0 (nan, nan)",
+race_Asian,"1.0 (nan, nan)",
+gender_Female,"1.0 (nan, nan)",
+marital_status_Legally Separated,"1.01 (nan, nan)",
+marital_status_Single,"1.02 (nan, nan)",
+race_Native American,"1.03 (nan, nan)",
+race_White,"1.06 (nan, nan)",

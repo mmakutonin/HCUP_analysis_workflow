@@ -1,0 +1,21 @@
+Given Uncomplicated Appendicitis and Initial Non-Surgical Management - Risks of Surgical Conversion 
+Management Type
+False    1968
+True      839 
+Logreg Results: 
+Area under the curve (AUC): 0.59 
+Model Accuracy: 0.59 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 40 
+PCA Results: 
+Area under the curve (AUC): 0.56 
+Model Accuracy: 0.59 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                      Metric             Mean True           Mean False        P value
+0                       Cost  9709.4595 ± 644.2737  3800.835 ± 535.2598   2.790006e-41
+1     Inpatient Readmissions       0.6138 ± 0.0393      0.0569 ± 0.0119  9.730895e-118
+2            ED Readmissions       0.8093 ± 0.0585      0.2912 ± 0.0324   4.949328e-48
+3                       Died             0.0 ± nan            0.0 ± nan            NaN
+4                        LOS       3.2241 ± 0.2547      2.0442 ± 0.1723   1.787104e-13
+5  Readmit with Complication             0.0 ± nan            0.0 ± nan            NaN

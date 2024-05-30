@@ -1,0 +1,20 @@
+Concurrent Alcohol Poisoning vs Pure Drug Poisoning 
+False    10888
+True       648 
+Logreg Results: 
+Area under the curve (AUC): 0.58 
+Model Accuracy: 0.84 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 38 
+PCA Results: 
+Area under the curve (AUC): 0.55 
+Model Accuracy: 0.66 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                        Metric             Mean True           Mean False   P value
+0                         Cost  2894.1063 ± 538.5352  2859.0922 ± 172.662  1.806894
+1       Inpatient Readmissions       0.0525 ± 0.0206      0.0454 ± 0.0045  1.018070
+2              ED Readmissions       0.3488 ± 0.0889      0.2488 ± 0.0133  0.059371
+3                         Died             0.0 ± nan            0.0 ± nan       NaN
+4                          LOS       1.4059 ± 0.2249      1.2256 ± 0.0638  0.262122
+5  Ventilator on Initial Visit       0.0262 ± 0.0123            0.0 ± nan       NaN

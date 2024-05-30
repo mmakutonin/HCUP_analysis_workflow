@@ -1,0 +1,21 @@
+Given Uncomplicated Appendicitis - Surgical vs Non-Surgical Management 
+Management Type
+True     16433
+False     2807 
+Logreg Results: 
+Area under the curve (AUC): 0.69 
+Model Accuracy: 0.67 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 40 
+PCA Results: 
+Area under the curve (AUC): 0.68 
+Model Accuracy: 0.66 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                      Metric           Mean True           Mean False        P value
+0                       Cost  4626.041 ± 82.2957  5566.897 ± 433.4474   6.004158e-05
+1     Inpatient Readmissions     0.0186 ± 0.0024      0.2234 ± 0.0172  2.196289e-108
+2            ED Readmissions     0.2149 ± 0.0106         0.446 ± 0.03   1.374167e-44
+3                       Died           0.0 ± nan            0.0 ± nan            NaN
+4                        LOS     2.1444 ± 0.0392      2.3969 ± 0.1441   1.868734e-03
+5  Readmit with Complication           0.0 ± nan            0.0 ± nan            NaN

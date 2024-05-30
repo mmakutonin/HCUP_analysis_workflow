@@ -1,0 +1,20 @@
+Given Stimulant Use - Pure Drug Poisoning vs Concurrent Alcohol Poisoning 
+False    1093
+True      102 
+Logreg Results: 
+Area under the curve (AUC): 0.56 
+Model Accuracy: 0.77 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 38 
+PCA Results: 
+Area under the curve (AUC): 0.53 
+Model Accuracy: 0.75 
+Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
+Numer of Groups: 10 
+                        Metric              Mean True             Mean False   P value
+0                         Cost  4427.3162 ± 1364.9045  8338.9518 ± 1034.0897  0.000023
+1       Inpatient Readmissions        0.0392 ± 0.0379        0.0695 ± 0.0194  0.328573
+2              ED Readmissions        0.2843 ± 0.1263         0.226 ± 0.0366  0.772587
+3                         Died              0.0 ± nan              0.0 ± nan       NaN
+4                          LOS        1.6961 ± 0.4333         3.065 ± 0.3915  0.000013
+5  Ventilator on Initial Visit        0.0686 ± 0.0493              0.0 ± nan       NaN

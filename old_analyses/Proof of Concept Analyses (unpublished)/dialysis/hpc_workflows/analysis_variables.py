@@ -4,17 +4,17 @@ import pandas as pd
 import numpy as np
 
 procedure_codes = { #currently ____ procedures, change for new procedure
-    "cpt_codes": [],
-    "ICD-10-procedures": []
+    "cpt_codes": ["90935", "90937"],
+    "ICD-10-procedures": ["5A1D"]
 }
-diagnosis_codes = [ #currently for _______
+diagnosis_codes = [ #currently for all patients with dialysis
     # "ICDCODE", # No periods, regex allowed
 ]
 
 init_visit_datasets = {
     "sedd": True,
-    "sasd": True,
-    "sid": True,
+    "sasd": False,
+    "sid": False,
     "sid_ed": True #rows in SID that represent patients admitted from the ED.
 }
 
@@ -57,15 +57,14 @@ code_category_dict = {
 }
 
 def dataset_filtering_function(dataset_name, dataset_core, proc_code_type):
-    return dataset_core[pd.concat([
-        dataset_core["ICD-10"].str.contains(f"^{code}") for code in diagnosis_codes
-    ], axis=1).any(axis=1)].copy()
-
+    return dataset_core[dataset_core[proc_code_type].transform(
+        lambda x: any([x.startswith(code) for code in [*procedure_codes["cpt_codes"], *procedure_codes["ICD-10-procedures"]]])
+    )].copy()
 
 # Data Enrichment
 # Separates records/patients into subgroups for statistical analysis. Currently _________
 
-# if using sedd/sasd files, can use code descriptors found at https://hcup-us.ahrq.gov/db/vars/dispuniform/nisnote.jsp to implement dict
+# if using sedd/sasd files, can use code descriptors found at https://www.hcup-us.ahrq.gov/db/vars/siddistnote.jsp?var=DISPUB04 to implement dict
 dispo_dict = {
     # "Col_name": [int codes included]
 }
@@ -97,19 +96,10 @@ def data_enrichment_function(sedd, sasd, sid, sid_ed, codes, linker_table):
             axis=1
         )
     
-    # linker_table[de_col_keys[0]] = code_linker(de_col_keys[0], True).map({
+    # linker_table[de_col_keys[0]] = code_linker(de_col_keys[0], init_visit=True).map({
     #     True: de_col_values[de_col_keys[0]][0],
     #     False: de_col_values[de_col_keys[0]][1]
     # })
-
-    # linker_table[de_col_keys[1]] = code_linker(de_col_keys[1], True).map({
-    #     True: de_col_values[de_col_keys[1]][1],
-    #     False: de_col_values[de_col_keys[1]][0]
-    # })
-    # linker_table[de_col_keys[1]] = code_linker(de_col_keys[1], False, False).map({
-    #     True: de_col_values[de_col_keys[1]][2],
-    #     False: np.nan #this way the previous array won't update
-    # }).combine_first(linker_table[de_col_keys[1]])
     
     return linker_table
 
@@ -131,19 +121,19 @@ sid_inflation_adjustment = pd.DataFrame([
 ]).set_index(['year', 'discharge_quarter'])
 
 demographic_tables = [
-    # {
-    #     "key": de_col_keys[0],
-    #     "query_string": "`Cost (USD)` >= 0", #Universal filter
-    #     "save_filepath": f"../tables/table name.csv",
-    #     "has_outcome_crosscomparison": True,
-    #     "outcome_crosscomparison": [
-    #         {
-    #             "save_filepath": "../tables/table name.csv",
-    #             "outcome_variable": "Cost (USD)",
-    #             "groupby_row": de_col_values[de_col_keys[1]] #groupby_col is always the "key" attribute above
-    #         }
-    #     ]
-    # },
+    {
+        "key": "Geriatric (>65)",
+        "query_string": "`Cost (USD)` >= 0", #Universal filter
+        "save_filepath": f"../tables/Table 1.csv",
+        "has_outcome_crosscomparison": False,
+        # "outcome_crosscomparison": [
+        #     {
+        #         "save_filepath": "../tables/table name.csv",
+        #         "outcome_variable": "Cost (USD)",
+        #         "groupby_row": de_col_values[de_col_keys[1]] #groupby_col is always the "key" attribute above
+        #     }
+        # ]
+    },
 ]
 
 linreg_targets = {

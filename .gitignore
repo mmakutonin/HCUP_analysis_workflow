@@ -1,0 +1,9 @@
+.RData
+.Rhistory
+.ipynb_checkpoints
+__pycache__
+run.err
+run.out
+pickled_data
+hpc_workflows/scratch.ipynb
+raw_data/

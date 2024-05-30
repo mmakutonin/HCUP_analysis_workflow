@@ -2,7 +2,7 @@
 import pandas as pd
 from utility_functions import starting_run, finished_run
 
-data_dir = '../../raw_data/'
+data_dir = '../raw_data/'
 
 # Reads HCUP text data into dataframe
 # Reference structure is {"col_name": [start_index, stop_index]}, see below
@@ -44,6 +44,8 @@ core_reference = {
             "discharge_quarter": "float",
             "rural_urban":       "float",
             "disposition_code":  "int",
+            "chief_complaint":   "string"
+
         },
         "2021": {
             "age":               [1,3],
@@ -65,6 +67,7 @@ core_reference = {
             "visit_link":        [1250,1258],
             "total_charges":     [1225,1234],
             "year":              [1259,1262],
+            "chief_complaint":   [659,665],
         },
         "2020": {
             "age":               [1,3],
@@ -86,6 +89,7 @@ core_reference = {
             "visit_link":        [1231,1239],
             "total_charges":     [1206,1215],
             "year":              [1240,1243],
+            "chief_complaint":   [659,665],
         },
         "2019": {
             "age":               [1,3],
@@ -107,6 +111,7 @@ core_reference = {
             "visit_link":        [1172,1180],
             "total_charges":     [1147,1156],
             "year":              [1181,1184],
+            "chief_complaint":   [999,1005],
         },
         "2018": {
             "age":               [1,3],
@@ -128,6 +133,8 @@ core_reference = {
             "year":              [1250,1253],
             "discharge_quarter": [621,622],
             "disposition_code":  [615,616],
+            "chief_complaint":   [653,659],
+
         },
         "2017": {
             "age":               [1,3],
@@ -149,6 +156,7 @@ core_reference = {
             "year":              [1028,1031],
             "discharge_quarter": [621,622],
             "disposition_code":  [615,616],
+            "chief_complaint":   [656,662],
         },
         "2016": {
             "age":               [1,3],
@@ -170,6 +178,7 @@ core_reference = {
             "year":              [1107,1110],
             "discharge_quarter": [621,622],
             "disposition_code":  [615,616],
+            "chief_complaint":   [656,662],
         }
     },
     "sasd": {
@@ -184,6 +193,7 @@ core_reference = {
             "total_charges":   "float",
             "discharge_quarter": "float",
             "disposition_code":  "int",
+            "chief_complaint": "string",
         },
         "2021": {
             "cpt_codes":         [18,242],
@@ -196,7 +206,7 @@ core_reference = {
             "year":              [1259,1262],
             "length_of_stay":    [1093,1097],
             "total_charges":   [1225,1234],
-            
+            "chief_complaint": [659,665],
         },
         "2020": {
             "cpt_codes":         [18,242],
@@ -209,7 +219,7 @@ core_reference = {
             "year":              [1240,1243],
             "length_of_stay":    [1086,1090],
             "total_charges":   [1206,1215],
-            
+             "chief_complaint": [659,665],
         },
         "2019": {
             "cpt_codes":         [18,242],
@@ -222,7 +232,7 @@ core_reference = {
             "year":              [1191,1194],
             "length_of_stay":    [1037,1041],
             "total_charges":   [1157,1166],
-            
+            "chief_complaint":   [1009,1015],
         },
         "2018": {
             "record_id":         [1096,1110],
@@ -235,6 +245,7 @@ core_reference = {
             "total_charges":   [1226,1235],
             "discharge_quarter": [621,622],
             "disposition_code":  [617,618],
+            "chief_complaint":   [663,669],
         },
         "2017": {
             "record_id":         [889,903],
@@ -247,6 +258,7 @@ core_reference = {
             "total_charges":   [1004,1013],
             "discharge_quarter": [621,622],
             "disposition_code":  [617,618],
+            "chief_complaint":   [666,672],
         },
         "2016": {
             "record_id":         [968,982],
@@ -259,6 +271,7 @@ core_reference = {
             "total_charges":   [1083,1092],
             "discharge_quarter": [621,622],
             "disposition_code":  [617,618],
+            "chief_complaint":   [666,672],
         }
     },
     "sid": {

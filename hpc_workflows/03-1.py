@@ -1,74 +1,75 @@
-# %% [markdown]
-# ### Imports
-
-# %%
 import pandas as pd
 import numpy as np
 from utility_functions import load_file, pickle_file, starting_run, finished_run, print_to_drop
-from analysis_variables import de_col_keys, de_col_values, demographic_tables, code_category_dict
 from scipy.stats import f_oneway, ttest_ind, sem, norm, t
 from statsmodels.stats.api import DescrStatsW, CompareMeans
 
-full_dataset = load_file("summary_costs_enhanced.pickle")
-filtered_dataset_codes = load_file("fully_filtered_codes.pickle")
-comorbidities = load_file('comorbidities.pickle')
+summary_table_sum_cols = [ #these are the columns that are not aggregates of proportions of patients
+    "Cost (USD)", "Charleston Comorbidity Index (mean)", "Age (mean years)",
+    "Zip Code Income (mean quartile)",'Length of Stay (mean days)',
+    "Recurrent ED Visits (# / 1000 patients)",
+    "Repeat Hospitalizations (# / 1000 patients)"
+]
 
-# %% [markdown]
-# ### Demographic Column Classification
+def classify_demographic_columns(
+        analysis_name:str,
+        demographic_categories:list[str],
+        de_col_keys:list[str],
+        de_col_values: dict[str, list[str]]
+):
+    full_dataset = load_file("summary_costs_enhanced.pickle", analysis_name)
+    comorbidities = load_file('comorbidities.pickle', analysis_name)
+    full_dataset["Married"] = full_dataset["marital_status"].eq('Married')
+    full_dataset["Uninsured"] = full_dataset["payer"].isin(['No charge', 'Self-pay'])
+    full_dataset["Medicare"] = full_dataset["payer"].eq('Medicare')
+    full_dataset["Medicaid"] = full_dataset["payer"].eq('Medicaid')
+    full_dataset["Private Insurance"] = full_dataset["payer"].eq('Private insurance')
+    full_dataset["White"] = full_dataset["race"].eq("White")
+    full_dataset["African American or Hispanic"] = full_dataset["race"].isin(['African-American', "Hispanic"])
+    full_dataset["Female"] = full_dataset["gender"].eq("Female")
+    full_dataset["Died"] = full_dataset["Died"].eq(1)
 
-# %%
-full_dataset["Married"] = full_dataset["marital_status"].eq('Married')
-full_dataset["Uninsured"] = full_dataset["payer"].isin(['No charge', 'Self-pay'])
-full_dataset["Medicare"] = full_dataset["payer"].eq('Medicare')
-full_dataset["Medicaid"] = full_dataset["payer"].eq('Medicaid')
-full_dataset["Private Insurance"] = full_dataset["payer"].eq('Private insurance')
-full_dataset["White"] = full_dataset["race"].eq("White")
-full_dataset["African American or Hispanic"] = full_dataset["race"].isin(['African-American', "Hispanic"])
-full_dataset["Female"] = full_dataset["gender"].eq("Female")
-full_dataset["Died"] = full_dataset["Died"].eq(1)
+    #rename some columns for cosmetic reasons:
+    full_dataset["Zip Code Income (mean quartile)"] = full_dataset["median_zip_income"]
+    full_dataset["Age (mean years)"] = full_dataset["age"]
+    full_dataset["Recurrent ED Visits (# / 1000 patients)"] = full_dataset["ED Readmissions"].mul(1000)
+    full_dataset["Repeat Hospitalizations (# / 1000 patients)"] = full_dataset["Inpatient Readmissions"].mul(1000)
+    full_dataset["Cost (USD)"] = full_dataset["Cost"]
+    full_dataset["Pediatric (<18)"] = full_dataset["Pediatric"]
+    full_dataset["Geriatric (>65)"] = full_dataset["Geriatric"]
+    full_dataset["Charleston Comorbidity Index (mean)"] = full_dataset["CMDF CCI"]
+    full_dataset["Length of Stay (mean days)"] = full_dataset["LOS"]
+    full_dataset["Deaths (%)"] = full_dataset["Died"]
 
-#rename some columns for cosmetic reasons:
-full_dataset["Zip Code Income (mean quartile)"] = full_dataset["median_zip_income"]
-full_dataset["Age (mean years)"] = full_dataset["age"]
-full_dataset["Recurrent ED Visits (# / 1000 patients)"] = full_dataset["ED Readmissions"].mul(1000)
-full_dataset["Repeat Hospitalizations (# / 1000 patients)"] = full_dataset["Inpatient Readmissions"].mul(1000)
-full_dataset["Cost (USD)"] = full_dataset["Cost"]
-full_dataset["Pediatric (<18)"] = full_dataset["Pediatric"]
-full_dataset["Geriatric (>65)"] = full_dataset["Geriatric"]
-full_dataset["Charleston Comorbidity Index (mean)"] = full_dataset["CMDF CCI"]
-full_dataset["Length of Stay (mean days)"] = full_dataset["LOS"]
-full_dataset["Deaths (%)"] = full_dataset["Died"]
+    # del full_dataset["Admitted"] #step needed in this analysis due to "Admitted" column in de_col_values
+    for key in de_col_keys:
+        full_dataset = full_dataset.join([full_dataset[key].eq(val).rename(val).loc[full_dataset.index] for val in de_col_values[key]])
+    # full_dataset = full_dataset.join([full_dataset[de_col_name].eq(val).rename(val) for val in de_col_values])
 
-# del full_dataset["Admitted"] #step needed in this analysis due to "Admitted" column in de_col_values
-for key, values in de_col_values.items():
-    full_dataset = full_dataset.join([full_dataset[key].eq(val).rename(val).loc[full_dataset.index] for val in values])
-# full_dataset = full_dataset.join([full_dataset[de_col_name].eq(val).rename(val) for val in de_col_values])
+    dem_dataset = full_dataset[[
+        'Zip Code Income (mean quartile)', 
+        'Age (mean years)',
+        "Pediatric (<18)",
+        "Geriatric (>65)",
+        'Cost (USD)',
+        "Admitted",
+        "Married",
+        "Uninsured", 
+        "Medicare",
+        "Medicaid",
+        "Private Insurance",
+        "White",
+        "African American or Hispanic",
+        "Female",
+        'Recurrent ED Visits (# / 1000 patients)',
+        'Repeat Hospitalizations (# / 1000 patients)',
+        'Deaths (%)',
+        'Charleston Comorbidity Index (mean)',
+        'Length of Stay (mean days)',
+        *pd.core.common.flatten(de_col_values.values())
+    ]].copy()
 
-dem_dataset = full_dataset[[
-    'Zip Code Income (mean quartile)', 
-    'Age (mean years)',
-    "Pediatric (<18)",
-    "Geriatric (>65)",
-    'Cost (USD)',
-    "Admitted",
-    "Married",
-    "Uninsured", 
-    "Medicare",
-    "Medicaid",
-    "Private Insurance",
-    "White",
-    "African American or Hispanic",
-    "Female",
-    'Recurrent ED Visits (# / 1000 patients)',
-    'Repeat Hospitalizations (# / 1000 patients)',
-    'Deaths (%)',
-    'Charleston Comorbidity Index (mean)',
-    'Length of Stay (mean days)',
-    *pd.core.common.flatten(de_col_values.values()),
-    *de_col_numerical_cols
-]].copy()
-
-category_dict = {
+    category_dict = {
     'Totals': 'Demographic',
     'Age (mean years)': 'Demographic',
     "Pediatric (<18)": 'Demographic',
@@ -83,35 +84,21 @@ category_dict = {
     'Uninsured': 'Insurance Status',
     'Zip Code Income (mean quartile)': 'Demographic',
     'Charleston Comorbidity Index (mean)': 'Comorbidity',
-    **{key: 'Comorbidity' for key in pd.core.common.flatten(list(code_category_dict.keys())[20:])}, #first 20 used to calculate CCI
+    **{key: 'Comorbidity' for key in pd.core.common.flatten(demographic_categories[20:])}, #first 20 used to calculate CCI
     'Recurrent ED Visits (# / 1000 patients)': 'Outcome',
     'Repeat Hospitalizations (# / 1000 patients)': 'Outcome',
     'Cost (USD)': 'Outcome',
     'Deaths (%)': 'Outcome',
     'Length of Stay (mean days)': 'Outcome',
     'Admitted': 'Clinical Pathway',
-    **{value: 'Clinical Pathway' for value in pd.core.common.flatten(de_col_values.values())},
-    **{value: 'Clinical Pathway' for value in de_col_numerical_cols}
+    **{value: 'Clinical Pathway' for value in pd.core.common.flatten(de_col_values.values())}
 }
 
-summary_table_sum_cols = [ #these are the columns that are not aggregates of proportions of patients
-    "Cost (USD)", "Charleston Comorbidity Index (mean)", "Age (mean years)",
-    "Zip Code Income (mean quartile)",'Length of Stay (mean days)',
-    "Recurrent ED Visits (# / 1000 patients)",
-    "Repeat Hospitalizations (# / 1000 patients)"
-]
+    return full_dataset, dem_dataset, comorbidities, category_dict
 
-# %%
 def create_outcome_crosscomparison_table(num_full_dataset, outcome_variable, groupby_row):
     table_data = {}
-    if len(groupby_row) == 1: #This probably represents a demographic variable.
-        groupby_row.append(f"Not {groupby_row[0]}")
-        demographic_row = True
-    else:
-        demographic_row = False
     for name, dataset in num_full_dataset:
-        if demographic_row:
-            dataset[f"Not {groupby_row[0]}"] = (~(dataset[groupby_row[0]].astype("bool"))).astype(int) #need type conversions because NOT operation does not work on int series.
         dataset = dataset[[*groupby_row, outcome_variable]]
         table_data[f"{name} (%, 95% CI, N)"] = [dataset[dataset[row] == 1][outcome_variable] for row in groupby_row]
     dataset_df = pd.DataFrame(table_data, index=groupby_row)
@@ -143,15 +130,20 @@ def create_outcome_crosscomparison_table(num_full_dataset, outcome_variable, gro
         dataset_df = dataset_df.T
         return_df = return_df.T
     return return_df.replace(np.nan, " ")
-    
 
-# %% [markdown]
-# ### Create Summary Table
-
-# %%
-def create_summary(groupby_col, save_filepath, tb, filter_criteria="`Cost (USD)` >= 0"): #cost should always be positive, making this a universal filter
+def create_summary(
+        analysis_name:str,
+        groupby_col:str,
+        save_name:str,
+        table_configuration_variables:dict,
+        full_dataset:pd.DataFrame,
+        dem_dataset:pd.DataFrame,
+        comorbidities:pd.DataFrame,
+        category_dict:dict,
+        filter_criteria="`Cost (USD)` >= 0" #cost should always be positive, making this a universal filter
+    ):
     if dem_dataset.query(filter_criteria).shape[0] == 0:
-        print_to_drop(f"Could not create `{save_filepath}` because filter criteria of `{filter_criteria}` returned empty dataset.")
+        print_to_drop(f"Could not create `{save_name}` because filter criteria of `{filter_criteria}` returned empty dataset.")
         return
     #Dependencies for both cross-comparison and summary tables
     num_full_dataset = dem_dataset.query(filter_criteria).join(comorbidities, how="left")\
@@ -199,16 +191,38 @@ def create_summary(groupby_col, save_filepath, tb, filter_criteria="`Cost (USD)`
         summary_table.loc["Totals"] = [*col_totals, ' ']
     else:
         summary_table.loc["Totals"] = col_totals
-    summary_table.reindex(category_dict.keys()).to_csv(save_filepath)
+    summary_table.reindex(category_dict.keys()).to_csv(f"../results/{analysis_name}/tables/{save_name}.csv")
     #Create cross-comparison tables
-    if tb["has_outcome_crosscomparison"]:
-        for table in tb["outcome_crosscomparison"]:
+    if table_configuration_variables["has_outcome_crosscomparison"]:
+        for table in table_configuration_variables["outcome_crosscomparison"]:
             create_outcome_crosscomparison_table(
                 num_full_dataset,
                 table["outcome_variable"],
                 table["groupby_row"]
-            ).to_csv(table["save_filepath"])
+            ).to_csv(f"../results/{analysis_name}/tables/{table['save_name']}.csv")
 
-# %%
-for tb in demographic_tables:
-    create_summary(tb["key"], tb["save_filepath"], tb, tb["query_string"])
+def create_summary_tables(
+        analysis_name:str,
+        demographic_table_configurations:list[dict],
+        code_category_dict:dict[str, list[str]],
+        de_col_keys:list[str],
+        de_col_values:dict[str,list[str]]
+    ):
+    full_dataset, dem_dataset, comorbidities, category_dict = classify_demographic_columns(
+        analysis_name,
+        list(code_category_dict.keys()),
+        de_col_keys,
+        de_col_values
+    )
+    for table_configuration in demographic_table_configurations:
+        create_summary(
+            analysis_name=analysis_name,
+            groupby_col=table_configuration["key"],
+            save_name=table_configuration["save_name"],
+            table_configuration_variables=table_configuration,
+            full_dataset=full_dataset,
+            dem_dataset=dem_dataset,
+            comorbidities=comorbidities,
+            category_dict=category_dict,
+            filter_criteria=table_configuration["query_string"]
+        )

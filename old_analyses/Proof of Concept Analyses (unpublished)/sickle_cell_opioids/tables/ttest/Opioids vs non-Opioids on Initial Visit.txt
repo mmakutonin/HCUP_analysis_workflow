@@ -1,0 +1,11 @@
+Opioids vs non-Opioids on Initial Visit
+False    680
+True     478
+Logreg Results:Logistic Regression Accuracy: 0.63
+PCA Results:Logistic Regression Accuracy: 0.61
+                   Metric              Mean True              Mean False   P value
+0                    Cost  7742.0333 ± 2200.6198  11625.6691 ± 1921.8506  0.018619
+1  Inpatient Readmissions        0.7113 ± 0.1675           0.725 ± 0.162  1.816570
+2         ED Readmissions        1.6674 ± 0.3293         1.3941 ± 0.2735  0.422315
+3                    Died        0.0084 ± 0.0082         0.0118 ± 0.0081  1.126629
+4                     LOS        5.8619 ± 1.6451         7.6162 ± 1.5944  0.267382

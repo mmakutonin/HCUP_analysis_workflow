@@ -34,11 +34,4 @@ conda activate hcup-test
 # python3 -m pip install scikit-learn
 # python3 -m pip install matplotlib
 
-rm -r ../tables
-mkdir ../tables
-rm -r ../figures/comparison plots
-mkdir ../figures/comparison plots
-
-python3 ./01-0.py && python3 ./01-1.py && \
-python3 ./02-0.py && python3 ./02-1.py && python3 ./02-2.py && python3 ./02-3.py && python3 ./02-4.py && \
-python3 ./03-1.py && python3 ./03-2.py && python3 ./03-3.py
+python3 main.py

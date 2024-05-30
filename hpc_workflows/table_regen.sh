@@ -3,22 +3,35 @@
 #SBATCH -o table_regen.out
 #SBATCH -e table_regen.err
 #SBATCH -p nano -N 1
-#SBATCH --mail-user=mmakutonin@gwmail.gwu.edu
+#SBATCH --mail-user={email_address}
 #SBATCH --mail-type=ALL
-#SBATCH -D /lustre/groups/meltzergrp/HCUP/appendicitis/hpc_workflows
-module load python3
-python3 -m pip install pandas
-python3 -m pip install numpy
-python3 -m pip install scipy
-python3 -m pip install statsmodels
-python3 -m pip install scikit-learn
-python3 -m pip install matplotlib
+#SBATCH -D /lustre/groups/meltzergrp/HCUP/{analysis_name}/hpc_workflows
 
-cd /lustre/groups/meltzergrp/HCUP/appendicitis/hpc_workflows
+# Activate Conda environment to run code
+. /SMHS/home/mmakutonin/miniconda3/etc/profile.d/conda.sh
+# conda create -n hcup-test pandas numpy scipy statsmodels scikit-learn matplotlib
+conda activate hcup-test
 
-rm -r ../tables
-mkdir ../tables
-rm -r ../figures/comparison plots
-mkdir ../figures/comparison plots
+# # to prepare the directory for files
+# cd /lustre/groups/meltzergrp/HCUP/{analysis_name}
+# rm -r hpc_workflows
+# in a separate CMD (not on pegasus)
+# scp -r HCUP/{analysis_name}/hpc_workflows mmakutonin@pegasus.arc.gwu.edu:/lustre/groups/meltzergrp/HCUP/{analysis_name}
 
-python3 ./03-1.py && python3 ./03-2.py && python3 ./03-3.py
+# to run
+# sbatch /lustre/groups/meltzergrp/HCUP/{analysis_name}/hpc_workflows/run.sh
+
+# to check available nodes and status
+# sinfo
+# squeue
+
+# # old functionality
+# module load python3
+# python3 -m pip install pandas
+# python3 -m pip install numpy
+# python3 -m pip install scipy
+# python3 -m pip install statsmodels
+# python3 -m pip install scikit-learn
+# python3 -m pip install matplotlib
+
+python3 main_regenerate_outputs_only.py
