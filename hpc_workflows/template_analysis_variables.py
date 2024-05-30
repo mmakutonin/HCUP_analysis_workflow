@@ -62,9 +62,9 @@ code_category_dict = {
 # TODO the current approach makes it so that the linker_table charts are **necessarily** a subset of revisit-eligible charts.
 # If we need a different use case eventually, will need to be re-engineered.
 def dataset_filtering_function(dataset_name, dataset_core, proc_code_type):
-    return dataset_core[pd.concat([
-        dataset_core["ICD-10"].str.contains(f"^{code}") for code in diagnosis_codes
-    ], axis=1).any(axis=1)].copy()
+    icd_code_matches = [dataset_core["ICD-10"].str.contains(f"^{code}") for code in diagnosis_codes]
+    chief_complaint_matches = [dataset_core["chief_complaint"].str.contains(f"^{code}") for code in diagnosis_codes] if "sid" not in dataset_name else []
+    return dataset_core[pd.concat([*icd_code_matches, *chief_complaint_matches], axis=1).any(axis=1)].copy()
 
 def linker_table_filtering_function(dataset):
     return dataset[pd.concat([
