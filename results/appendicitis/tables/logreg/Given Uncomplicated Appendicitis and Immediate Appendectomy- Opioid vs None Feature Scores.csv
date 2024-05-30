@@ -1,43 +1,41 @@
 ,Odds Ratio of ____ (95% CI),P-value
-appendecolith,"0.02 (-0.12, 0.17)",< 0.00001
-Antibiotic Treatment,"4.52 (4.48, 4.57)",< 0.00001
-CMDF CCI,"1.55 (1.5, 1.6)",< 0.00001
-median_zip_income,"1.31 (1.27, 1.36)",< 0.00001
-bowel obstruction,"0.66 (0.59, 0.73)",< 0.00001
-Diabetes Mellitus,"0.88 (0.83, 0.93)",< 0.00001
-Hypertension,"0.9 (0.85, 0.95)",2e-05
-Hyperlipidemia,"0.9 (0.85, 0.95)",0.00013
-Obesity,"0.92 (0.87, 0.96)",0.00017
-Aspirin,"0.92 (0.86, 0.97)",0.00161
-Ischemic Heart Disease,"0.95 (0.9, 1.0)",0.05211
-Alcohol-Related Disorders,"0.97 (0.92, 1.02)",0.18451
-pregnant,"1.02 (0.98, 1.06)",0.35487
-Nicotine Dependence,"1.02 (0.97, 1.07)",0.42286
-Mood Disorders,"0.98 (0.94, 1.03)",0.46224
-Pediatric_False,"1.1 (-4263500.49, 4263502.69)",1.0
-Pediatric_True,"0.91 (-4265861.48, 4265863.3)",1.0
-race_Native American,"1.03 (-1738287416903.16, 1738287416905.22)",1.0
-initial_discharge_quarter_3.0,"0.93 (-4834103089366.67, 4834103089368.53)",1.0
-race_Asian,"0.96 (-4230888675789.96, 4230888675791.89)",1.0
-initial_discharge_quarter_2.0,"0.97 (-4350931621969.22, 4350931621971.15)",1.0
-initial_discharge_quarter_1.0,"0.98 (-4337460291045.12, 4337460291047.08)",1.0
-race_African-American,"1.04 (-8509163765463.14, 8509163765465.22)",1.0
-race_Hispanic,"1.02 (-8202491813323.18, 8202491813325.22)",1.0
-race_Other,"0.99 (-4206919492093.88, 4206919492095.87)",1.0
-initial_discharge_quarter_4.0,"1.0 (-4683377357650.31, 4683377357652.31)",1.0
-race_White,"1.0 (-10982876632325.83, 10982876632327.82)",1.0
-payer_Medicare,"0.89 (nan, nan)",
-payer_No charge,"0.96 (nan, nan)",
-gender_Male,"0.97 (nan, nan)",
-Geriatric_True,"0.97 (nan, nan)",
-payer_Medicaid,"0.99 (nan, nan)",
-payer_Private insurance,"0.99 (nan, nan)",
-marital_status_Widowed,"0.99 (nan, nan)",
-marital_status_Divorced,"1.01 (nan, nan)",
-Geriatric_False,"1.03 (nan, nan)",
-gender_Female,"1.03 (nan, nan)",
-payer_Other,"1.04 (nan, nan)",
-payer_Self-pay,"1.04 (nan, nan)",
-marital_status_Legally Separated,"1.05 (nan, nan)",
-marital_status_Married,"1.06 (nan, nan)",
-marital_status_Single,"1.1 (nan, nan)",
+CMDF CCI,"1.89 (1.85, 1.93)",< 0.00001
+bowel obstruction,"0.14 (-0.01, 0.29)",< 0.00001
+median_zip_income,"1.26 (1.23, 1.3)",< 0.00001
+Diabetes Mellitus,"0.79 (0.75, 0.83)",< 0.00001
+Obesity,"0.89 (0.85, 0.92)",< 0.00001
+Hypertension,"0.87 (0.83, 0.92)",< 0.00001
+Ischemic Heart Disease,"0.89 (0.84, 0.93)",< 0.00001
+Hyperlipidemia,"0.93 (0.89, 0.97)",0.0006
+Alcohol-Related Disorders,"0.96 (0.92, 0.99)",0.02217
+pregnant,"1.02 (0.99, 1.06)",0.19667
+Aspirin,"0.97 (0.93, 1.02)",0.23213
+Mood Disorders,"0.98 (0.94, 1.01)",0.23708
+Nicotine Dependence,"0.98 (0.94, 1.02)",0.27602
+payer_Medicare,"0.85 (-1542508.21, 1542509.92)",1.0
+marital_status_Widowed,"0.94 (-720077.43, 720079.3)",1.0
+marital_status_Divorced,"0.96 (-1005544.4, 1005546.33)",1.0
+payer_Other,"1.03 (-1134682.88, 1134684.93)",1.0
+payer_Self-pay,"1.03 (-1399851.98, 1399854.05)",1.0
+initial_discharge_quarter_3.0,"0.96 (-1940466.16, 1940468.08)",1.0
+initial_discharge_quarter_2.0,"1.03 (-1748248.87, 1748250.93)",1.0
+initial_discharge_quarter_1.0,"1.02 (-1742024.53, 1742026.58)",1.0
+Geriatric_True,"0.96 (-3417568.13, 3417570.06)",1.0
+Geriatric_False,"1.04 (-3417568.05, 3417570.14)",1.0
+payer_Private insurance,"1.02 (-2843259.02, 2843261.07)",1.0
+gender_Male,"0.99 (-2054290.01, 2054291.98)",1.0
+gender_Female,"1.01 (-2054478.5, 2054480.53)",1.0
+payer_Medicaid,"1.01 (-2512358.62, 2512360.65)",1.0
+marital_status_Single,"1.01 (-2689647.23, 2689649.25)",1.0
+marital_status_Married,"0.99 (-2542226.95, 2542228.92)",1.0
+payer_No charge,"1.0 (-455707.93, 455709.92)",1.0
+marital_status_Legally Separated,"1.0 (-527243.93, 527245.93)",1.0
+initial_discharge_quarter_4.0,"1.0 (-1879346.97, 1879348.98)",1.0
+Pediatric_True,"0.9 (nan, nan)",
+race_Asian,"0.97 (nan, nan)",
+race_African-American,"0.99 (nan, nan)",
+race_Hispanic,"0.99 (nan, nan)",
+race_Other,"0.99 (nan, nan)",
+race_White,"1.0 (nan, nan)",
+race_Native American,"1.0 (nan, nan)",
+Pediatric_False,"1.11 (nan, nan)",

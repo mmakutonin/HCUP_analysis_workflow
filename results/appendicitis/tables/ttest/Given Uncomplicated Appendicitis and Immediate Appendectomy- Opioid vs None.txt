@@ -3,13 +3,13 @@ Opioid Administration
 True     11113
 False     5320 
 Logreg Results: 
-Area under the curve (AUC): 0.88 
-Model Accuracy: 0.84 
+Area under the curve (AUC): 0.72 
+Model Accuracy: 0.7 
 Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
-Numer of Groups: 42 
+Numer of Groups: 40 
 PCA Results: 
-Area under the curve (AUC): 0.86 
-Model Accuracy: 0.84 
+Area under the curve (AUC): 0.6 
+Model Accuracy: 0.62 
 Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
 Numer of Groups: 10 
                       Metric            Mean True            Mean False       P value

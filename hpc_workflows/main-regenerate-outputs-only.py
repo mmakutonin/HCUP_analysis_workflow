@@ -23,6 +23,7 @@ import_module('03-2').run_multivariate_analyses(
     analysis_variables.logreg_targets,
     analysis_variables.linreg_targets,
     analysis_name,
+    analysis_variables.features_to_remove if 'features_to_remove' in dir(analysis_variables) else [],
     include_pca=True
 )
 import_module('03-3').plot_figures(

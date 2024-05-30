@@ -10,8 +10,8 @@ analysis_name = sys.argv[1]
 analysis_variables = import_module(f"{analysis_name}_analysis_variables")
 
 # Run all workflow functions
-import_module('01-0').import_data(analysis_name, analysis_variables.dataset_filtering_function)
-import_module('01-1').create_sedd_appendix(analysis_name)
+# import_module('01-0').import_data(analysis_name, analysis_variables.dataset_filtering_function)
+# import_module('01-1').create_sedd_appendix(analysis_name)
 import_module('02-0').create_linked_datasets(
     analysis_name,
     analysis_variables.linker_table_filtering_function,
@@ -36,6 +36,7 @@ import_module('03-2').run_multivariate_analyses(
     analysis_variables.logreg_targets,
     analysis_variables.linreg_targets,
     analysis_name,
+    analysis_variables.features_to_remove if 'features_to_remove' in dir(analysis_variables) else [],
     include_pca=True
 )
 import_module('03-3').plot_figures(

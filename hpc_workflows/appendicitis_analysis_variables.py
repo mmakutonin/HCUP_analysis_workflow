@@ -228,19 +228,25 @@ demographic_table_configurations = [
     #     "save_filepath": f"../tables/Table 1 Surgery vs None Uncomplicated.csv",
     #     "has_outcome_crosscomparison": False,
     # },
-    # {
-    #     "key": "Admitted",
-    #     "query_string": "Complicated == False",
-    #     "save_filepath": f"../tables/Table 1 Admission Status Uncomplicated.csv",
-    #     "has_outcome_crosscomparison": True,
-    #     "outcome_crosscomparison": [
-    #         {
-    #             "save_filepath": "../tables/Uncomplicated - Cost of Admission vs Cost of Surgery.csv",
-    #             "outcome_variable": "Cost (USD)",
-    #             "groupby_row": de_col_values[de_col_keys[1]] #groupby_col is always the "key" attribute above
-    #         }
-    #     ]
-    # },
+    {
+        "key": de_col_keys[0],
+        "query_string": "(`Pediatric (<18)` == False)",
+        "save_name": f"Table 1 Complicated vs Uncomplicated Adult",
+        "has_outcome_crosscomparison": False,
+    },
+    {
+        "key": "Admitted",
+        "query_string": "(Complicated == False) and (`Pediatric (<18)` == False)",
+        "save_name": f"Table 1 Admission Status Uncomplicated",
+        "has_outcome_crosscomparison": True,
+        "outcome_crosscomparison": [
+            {
+                "save_name": "Uncomplicated - Cost of Admission vs Cost of Surgery",
+                "outcome_variable": "Cost (USD)",
+                "groupby_row": de_col_values[de_col_keys[1]] #groupby_col is always the "key" attribute above
+            }
+        ]
+    },
     {
         "key": de_col_keys[1],
         "query_string": "(Complicated == False) and (`Pediatric (<18)` == False)",
@@ -293,6 +299,9 @@ linreg_targets = {
         ]
 }
 
+features_to_remove = [
+    "appendecolith", 'Antibiotic Treatment'
+]
 logreg_targets = {
     'Given Uncomplicated Appendicitis - Surgical vs Non-Surgical Management':\
         lambda dataset: dataset.loc[

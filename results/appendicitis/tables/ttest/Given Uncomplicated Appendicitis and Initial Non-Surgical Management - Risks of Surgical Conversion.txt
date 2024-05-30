@@ -3,13 +3,13 @@ Management Type
 False    1968
 True      839 
 Logreg Results: 
-Area under the curve (AUC): 0.69 
-Model Accuracy: 0.72 
+Area under the curve (AUC): 0.59 
+Model Accuracy: 0.59 
 Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
-Numer of Groups: 42 
+Numer of Groups: 40 
 PCA Results: 
-Area under the curve (AUC): 0.57 
-Model Accuracy: 0.6 
+Area under the curve (AUC): 0.56 
+Model Accuracy: 0.59 
 Hosmer-Lemeshow Statistics: chi2 statistic: 1.0, p: 0.0 
 Numer of Groups: 10 
                       Metric             Mean True           Mean False        P value

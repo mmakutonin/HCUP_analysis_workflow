@@ -1,6 +1,7 @@
 # # %%
 # import warnings
 # warnings.filterwarnings('ignore') #filters out annoying warnings in PCA output
+from typing import Optional
 import pandas as pd
 import numpy as np
 import os
@@ -24,11 +25,20 @@ def encode_dataset(dataset:pd.DataFrame):
     )
     encoded_dataset.columns = enc.get_feature_names_out(dataset.columns)
     return encoded_dataset
-def preprocess_dataset(analysis_name:str, dataset:pd.DataFrame, category_status:pd.DataFrame, code_category_dict:dict[str, list[str]], include_pca:bool):
+def preprocess_dataset(
+        analysis_name:str,
+        dataset:pd.DataFrame,
+        category_status:pd.DataFrame,
+        code_category_dict:dict[str, list[str]],
+        include_pca:bool,
+        features_to_remove:list[Optional[str]]):
     #encode dataset demographics
-    dem_dataset = dataset.loc[:, demographic_cols].dropna()
+    dem_dataset = dataset.loc[:, demographic_cols].drop(
+        columns=[col for col in features_to_remove if col in demographic_cols]
+    ).dropna()
     encoded_dataset = encode_dataset(dem_dataset).join(dataset[numerical_demographic_cols], how='inner')\
-        .join(category_status.loc[:, list(code_category_dict.keys())[20:]], how="inner").dropna()
+        .join(category_status.loc[:, list(code_category_dict.keys())[20:]], how="inner")
+    encoded_dataset = encoded_dataset.drop(columns=[col for col in features_to_remove if col in encoded_dataset.columns]).dropna()
     print_to_drop(f"Dropped {dem_dataset.shape[0] - encoded_dataset.dropna().shape[0]} rows for 3.2 analysis due to missing demographics.", analysis_name)
     #scale columns
     scaled_data = pd.DataFrame(
@@ -101,7 +111,8 @@ def run_multivariate_analyses(
         logreg_targets: dict[str, callable],
         linreg_targets: dict[str, callable],
         analysis_name:str,
-        include_pca:bool=True
+        features_to_remove:list[Optional[str]],
+        include_pca:bool=True,
     ):
     data = load_file("summary_costs_enhanced.pickle", analysis_name)
     category_status = load_file("comorbidities.pickle", analysis_name)
@@ -113,7 +124,7 @@ def run_multivariate_analyses(
         os.mkdir(f"../results/{analysis_name}/tables/ttest/")
     
     starting_run("LogReg")
-    scaled_data, pca_data = preprocess_dataset(analysis_name, data, category_status, code_category_dict, include_pca)
+    scaled_data, pca_data = preprocess_dataset(analysis_name, data, category_status, code_category_dict, include_pca, features_to_remove)
     if include_pca:
         pca_dataset, component_importance, component_eigenvalues = run_PCA(pca_data)
     data = data.loc[scaled_data.index]

@@ -160,7 +160,9 @@ def create_code_lookup_table(sedd, sasd, sid, linker_table):
     return pd.concat(data_list).fillna(False)
 
 def enrich_comorbidities(codes, code_category_dict):
-    visit_codes = codes.reset_index().groupby("visit_link")["codes"]
+    visit_codes = codes.loc[
+        codes['init_chart'] == True # we only want comorbidities known as of initial visit
+    ].reset_index().groupby("visit_link")["codes"]
     return pd.concat([
         visit_codes.apply(
             lambda ser: pd.concat([ser.str.contains(f"^{code}") for code in codes]).any().any()

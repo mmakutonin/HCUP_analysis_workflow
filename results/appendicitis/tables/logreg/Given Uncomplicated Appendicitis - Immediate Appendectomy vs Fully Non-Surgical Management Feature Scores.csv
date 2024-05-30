@@ -1,43 +1,41 @@
 ,Odds Ratio of ____ (95% CI),P-value
-appendecolith,"0.0 (-0.25, 0.25)",< 0.00001
-Antibiotic Treatment,"1.14 (1.09, 1.19)",< 0.00001
-CMDF CCI,"1.11 (1.06, 1.16)",0.0001
-Diabetes Mellitus,"0.91 (0.85, 0.96)",0.00015
-Alcohol-Related Disorders,"0.94 (0.89, 0.98)",0.00207
-Ischemic Heart Disease,"0.93 (0.89, 0.98)",0.00399
-Aspirin,"0.96 (0.91, 1.01)",0.088
-Obesity,"1.04 (0.99, 1.1)",0.1243
-median_zip_income,"0.98 (0.93, 1.03)",0.36483
-Nicotine Dependence,"0.98 (0.92, 1.03)",0.4125
-Mood Disorders,"0.98 (0.93, 1.03)",0.51562
-pregnant,"1.02 (0.96, 1.07)",0.52181
-Hyperlipidemia,"0.98 (0.92, 1.04)",0.52316
-Hypertension,"0.99 (0.93, 1.06)",0.86464
-bowel obstruction,"1.0 (0.94, 1.06)",0.96584
-race_Native American,"1.06 (-406754.69, 406756.81)",1.0
-race_Hispanic,"0.9 (-1936520.91, 1936522.71)",1.0
-race_White,"1.15 (-2559470.41, 2559472.7)",1.0
-race_African-American,"0.91 (-1974680.87, 1974682.7)",1.0
-race_Other,"0.97 (-998719.79, 998721.72)",1.0
-Geriatric_True,"0.93 (-2736996.49, 2736998.36)",1.0
-Geriatric_False,"1.07 (-2736996.35, 2736998.49)",1.0
-race_Asian,"1.01 (-985316.96, 985318.98)",1.0
-Pediatric_True,"0.77 (nan, nan)",
-initial_discharge_quarter_4.0,"0.94 (nan, nan)",
-payer_Medicare,"0.94 (nan, nan)",
-payer_Self-pay,"0.95 (nan, nan)",
-gender_Female,"0.97 (nan, nan)",
-payer_Medicaid,"0.98 (nan, nan)",
-payer_Other,"0.99 (nan, nan)",
-marital_status_Single,"0.99 (nan, nan)",
+bowel obstruction,"0.72 (0.67, 0.77)",< 0.00001
+CMDF CCI,"1.13 (1.1, 1.16)",< 0.00001
+Diabetes Mellitus,"0.92 (0.88, 0.96)",< 0.00001
+Ischemic Heart Disease,"0.95 (0.91, 0.99)",0.00675
+Hypertension,"0.96 (0.93, 1.0)",0.0649
+Alcohol-Related Disorders,"0.97 (0.94, 1.01)",0.10177
+median_zip_income,"1.02 (0.99, 1.06)",0.12431
+Aspirin,"0.98 (0.94, 1.02)",0.28024
+pregnant,"1.01 (0.98, 1.03)",0.62985
+Hyperlipidemia,"0.99 (0.96, 1.03)",0.74856
+Obesity,"1.0 (0.97, 1.04)",0.76185
+Nicotine Dependence,"1.0 (0.97, 1.03)",0.85452
+Mood Disorders,"1.0 (0.97, 1.03)",0.86041
+payer_No charge,"1.02 (-58341.61, 58343.64)",1.0
+payer_Medicare,"0.96 (-341912.3, 341914.22)",1.0
+payer_Private insurance,"1.05 (-572931.55, 572933.64)",1.0
+Pediatric_True,"0.86 (-2093603.5, 2093605.21)",1.0
+Pediatric_False,"1.17 (-2127809.0, 2127811.33)",1.0
+payer_Self-pay,"0.98 (-283158.18, 283160.14)",1.0
+payer_Medicaid,"0.98 (-403433.82, 403435.78)",1.0
+payer_Other,"1.01 (-212267.22, 212269.24)",1.0
+initial_discharge_quarter_4.0,"0.95 (-1367541.04, 1367542.94)",1.0
+Geriatric_True,"0.94 (-2218661.04, 2218662.92)",1.0
+Geriatric_False,"1.07 (-2218660.91, 2218663.05)",1.0
+initial_discharge_quarter_3.0,"1.03 (-1470742.61, 1470744.66)",1.0
+initial_discharge_quarter_1.0,"1.02 (-1287742.8, 1287744.85)",1.0
+initial_discharge_quarter_2.0,"1.0 (-1332981.31, 1332983.31)",1.0
+race_Hispanic,"0.95 (nan, nan)",
+race_African-American,"0.97 (nan, nan)",
 marital_status_Married,"0.99 (nan, nan)",
-marital_status_Widowed,"1.0 (nan, nan)",
-marital_status_Divorced,"1.0 (nan, nan)",
-initial_discharge_quarter_2.0,"1.01 (nan, nan)",
-payer_No charge,"1.02 (nan, nan)",
-initial_discharge_quarter_1.0,"1.03 (nan, nan)",
-gender_Male,"1.03 (nan, nan)",
-initial_discharge_quarter_3.0,"1.03 (nan, nan)",
-marital_status_Legally Separated,"1.04 (nan, nan)",
-payer_Private insurance,"1.08 (nan, nan)",
-Pediatric_False,"1.29 (nan, nan)",
+race_Other,"0.99 (nan, nan)",
+marital_status_Widowed,"0.99 (nan, nan)",
+marital_status_Divorced,"0.99 (nan, nan)",
+gender_Male,"1.0 (nan, nan)",
+race_Asian,"1.0 (nan, nan)",
+gender_Female,"1.0 (nan, nan)",
+marital_status_Legally Separated,"1.01 (nan, nan)",
+marital_status_Single,"1.02 (nan, nan)",
+race_Native American,"1.03 (nan, nan)",
+race_White,"1.06 (nan, nan)",
